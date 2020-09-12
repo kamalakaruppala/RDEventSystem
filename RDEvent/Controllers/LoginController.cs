@@ -6,14 +6,10 @@ using System.Web.Mvc;
 
 namespace RDEvent.Controllers
 {
-    public class HomeController : Controller
+    public class LoginController : Controller
     {
-        // GET: Home
+        // GET: Login
         public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult Users()
         {
             return View();
         }

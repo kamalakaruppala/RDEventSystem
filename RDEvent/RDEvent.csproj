@@ -88,13 +88,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\barfiller.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Adminlogin.png" />
+    <Content Include="Content\Images\Derby1.jpg" />
+    <Content Include="Content\Images\Derby2.jpg" />
+    <Content Include="Content\Images\Events.jpg" />
+    <Content Include="Content\Images\Faxebook.png" />
+    <Content Include="Content\Images\Gallery1.jpg" />
+    <Content Include="Content\Images\Gallery2.jpg" />
+    <Content Include="Content\Images\Gallery3.jpg" />
+    <Content Include="Content\Images\Gallery4.jpg" />
+    <Content Include="Content\Images\Gmail.png" />
+    <Content Include="Content\Images\Instaragam.jpg" />
+    <Content Include="Content\Images\Logout.png" />
+    <Content Include="Content\Images\Maps.png" />
+    <Content Include="Content\Images\News.png" />
+    <Content Include="Content\Images\Phone.png" />
+    <Content Include="Content\Images\Register.jpg" />
+    <Content Include="Content\Images\Roller.Background 2.jpg" />
+    <Content Include="Content\Images\Roller.Background.jpg" />
+    <Content Include="Content\Images\Roller.jpg" />
+    <Content Include="Content\Images\Twitter.png" />
+    <Content Include="Content\Images\Userlogin.jpg" />
+    <Content Include="Content\maxresdefault.jpg" />
+    <Content Include="Content\RDANZI Logo 2.png.png" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\footer-bg.png" />
     <Content Include="Global.asax" />
+    <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\nowfont.css" />
+    <Content Include="Content\owl.carousel.min.css" />
+    <Content Include="Content\rockville.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -103,11 +133,17 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Content\slicknav.min.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -129,6 +165,22 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Register\Verification.cshtml" />
+    <Content Include="Views\Register\Verified.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Experience.cshtml" />
+    <Content Include="Views\Profile\Availability.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Login\Admin.cshtml" />
+    <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\News\AdminNews.cshtml" />
+    <Content Include="Views\Events\AdminEvents.cshtml" />
+    <Content Include="Views\Events\AddEvents.cshtml" />
+    <Content Include="Views\Events\EditEvent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -139,6 +191,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -6,18 +6,18 @@ using System.Web.Mvc;
 
 namespace RDEvent.Controllers
 {
-    public class HomeController : Controller
+    public class ProfileController : Controller
     {
-        // GET: Home
+        // GET: Profile
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Users()
+        public ActionResult Experience()
         {
             return View();
         }
-        public ActionResult Admin()
+        public ActionResult Availability()
         {
             return View();
         }

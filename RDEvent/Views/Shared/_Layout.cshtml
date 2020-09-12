@@ -8,33 +8,56 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-        </div>
-    </div>
 
+<h1><center>Roller Derby Association NewZealand Incorporated</center></h1>
+<body>
+    <header class="header">
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="~/Content/RDANZI Logo 2.png.png" alt=""></a>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+    </header>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+    <footer class="social-footer">
+        <div class="social-footer-left">
+            <a href="#"> <img class="logo" src=""> </a>
+        </div>
+        <div class="social-footer-middle">
+            <ul>
+                <li> <a href="#"> About Us</a> </li>
+                <li> <a href="#"> Privacy Policy</a> </li>
+                <li> <a href="#"> Terms of Use</a> </li>
+            </ul>
+        </div>
+        <div class="social-footer-icons">
+            <ul class="menu simple">
 
+                <li> <a href="https://www.facebook.com/"> <i class="fa fa-facebook" aria-hidden="true"> </i> </a> </li>
+                <li> <a href="https://www.instagram.com/?hl=en"> <i class="fa fa-instagram" aria-hidden="true"> </i> </a> </li>
+                <li> <a href="#"> <i class="fa fa-mobile-phone" aria-hidden="true"> </i> </a> </li>
+                <li> <a href="https://twitter.com/?lang=en"> <i class="fa fa-twitter" aria-hidden="true"> </i> </a> </li>
+            </ul>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+        </div>
+    </footer>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
 </body>
 </html>
