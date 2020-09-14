@@ -4,7 +4,7 @@
     -webkit-font-smoothing: antialiased;
 }
 
-h1,
+
 h2,
 h3,
 h4,
@@ -16,9 +16,7 @@ h6 {
     font-family: "Rajdhani", sans-serif;
 }
 
-h1 {
-    font-size: 60px;
-}
+
 
 h2 {
     font-size: 36px;
@@ -148,7 +146,7 @@ ol {
     }
 
 .site-btn {
-    font-size: 10px;
+    font-size: 15px;
     color: #ffffff;
     background: #000000;
     font-weight: 500;
@@ -156,7 +154,7 @@ ol {
     border: none;
     display: inline-block;
     padding: 8px 0px;
-    width: 18%;
+    width: auto;
 }
 /*Gallery*/
 * {
@@ -1088,6 +1086,7 @@ dcrumb-option {
 
     .social-footer-middle .a {
         border-color: white;
+        color:#fefefe;
     }
 
 .social-footer .social-footer-icons li:last-of-type, ul, li {

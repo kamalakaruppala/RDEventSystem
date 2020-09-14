@@ -6,41 +6,81 @@
 
 
 
-<header class="header">
+   
+<html>
+<body>
+    <div class="col-lg-20 col-md-20">
+        <div class="header_title">
 
+        </div>
+        <div class="header__nav">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2 col-md-2">
-
-                <div class="header__logo">
-                    <a href="./index.html"><img src="~/Content/RDANZI Logo 2.png.png" alt=""></a>
-                </div>
-            </div>
             <div class="header-link-right">
-                <ul>
+               
+                <a href="~/Profile/Index"><i></i>Update Profile</a>
+                &nbsp;&nbsp;
+                <a href="~/Home/Index"><i></i>Logout</a>
 
-                    <li><a href="~/Profile/Index">Update Profile</a></li>
-                    <li><a href="~/Home/Index">Logout</a></li>
-                </ul>
             </div>
         </div>
     </div>
+   
 
+    <section class="Events">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="column-sm-2">
+                        <a href="/Events/Index">
+                            <img src="~/Content/Images/Events.jpg" style="width:25%">
+                        </a>
+                        <a href="/News/Index">
+                            <img src="~/Content/Images/News.png" style="width:20%">
+                        </a>
+                        <a href="https://www.google.com/maps/search/?api=1&parameters">
+                            <img src="~/Content/Images/Maps.png" style="width:15%">
+                        </a>
+                    </div>
 
+                </div>
+                <div class="col-lg-6">
+                    <div class="about__text">
+                        <div class="section-title">
+                            <h2> Upcoming Events</h2>
+                        </div>
+                        <img src="~/Content/maxresdefault.jpg" style="width:50%">
+                        <p>
+                            Game 1 . Wellington . Region3
+                        </p>
+                        <img src="~/Content/Images/Derby1.jpg" style="width:50%">
+                        <p>
+                            Game 1 . Auckland . Region1
+                        </p>
+                        <a href="#" class="primary-btn"> Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="Registered_Events">
+            <div class="col-lg-6">
+                <div class="about__text">
+                    <div class="section-title">
+                        <h3> Registered Events</h3>
+                    </div>
 
+                    <p>
+                        Emralds Women vs Rubbies Women . Wellington . Region3
+                    </p>
 
-</header>
-
-<html>
-<body>
-
-    <section class="background-image">
-        <div class="bg-image img1"> </div>
-        <div class="bg-image img2"> </div>
-
-        <div class="bg-text"> </div>
+                    <a href="/Profile/Availability/" class="site-btn"> Change Availability</a>
+                    <p>
+                        Emralds Men vs Rubbies Men . Auckland . Region1
+                    </p>
+                    <a href="/Profile/Availability/" class="site-btn"> Change Availability</a>
+                </div>
+            </div>
+        </div>
     </section>
     <section class="gallery">
         <div class="slideshow-container">
@@ -117,86 +157,11 @@
             </script>
         </div>
     </section>
-    <section class="Events">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="column-sm-2">
-                        <a href="/Events/Index">
-                            <img src="~/Content/Images/Events.jpg" style="width:25%">
-                        </a>
-                        <a href="/News/Index">
-                            <img src="~/Content/Images/News.png" style="width:20%">
-                        </a>
-                        <a href="https://www.google.com/maps/search/?api=1&parameters">
-                            <img src="~/Content/Images/Maps.png" style="width:15%">
-                        </a>
-                    </div>
-
-                </div>
-                <div class="col-lg-6">
-                    <div class="about__text">
-                        <div class="section-title">
-                            <h2> Upcoming Events</h2>
-                        </div>
-                        <img src="~/Content/maxresdefault.jpg" style="width:50%">
-                        <p>
-                            Game 1 . Wellington . Region3
-                        </p>
-                        <img src="~/Content/Images/Derby1.jpg" style="width:50%">
-                        <p>
-                            Game 1 . Auckland . Region1
-                        </p>
-                        <a href="#" class="primary-btn"> Register</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    <div class="Registered_Events">
-        <div class="col-lg-6">
-            <div class="about__text">
-                <div class="section-title">
-                    <h3> Registered Events</h3>
-                </div>
-
-                <p>
-                    Emralds Women vs Rubbies Women . Wellington . Region3
-                </p>
-
-                <a href="~/Views/Profile/Availability.cshtml" class="site-btn"> Change Availability</a>
-                <p>
-                    Emralds Men vs Rubbies Men . Auckland . Region1
-                </p>
-                <a href="~/Views/Profile/Availability.cshtml" class="site-btn"> Change Availability</a>
-            </div>
-        </div>
-    </div>
-</section>
 </body>
 
 </html>
 
 
-<style>
-
-    .header-link-right {
-        max-width: 10%;
-    }
-
-        .header-link-right li, ul {
-            text-decoration-color: white;
-            display: inline-block;
-            padding-right: 1em;
-            margin-right: 1rem;
-        }
-
-        .header-link-right.a {
-            border-color: white;
-        }
-
-   
-</style>
 
 
 
@@ -231,35 +196,7 @@
         clear: both;
     }
 
-    .background-image body, html {
-        height: 100%;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    * background-image {
-        box-sizing: border-box;
-    }
-
-    background-image .bg-image {
-        /* Full height */
-        height: 50%;
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    /* Images used */
-    .img1 {
-        background-image: url("/Content/Images/Events.jpg");
-    }
-
-    .img2 {
-        background-image: url("'/Content/Images/Roller.Background 2.jpg'");
-    }
-
-
+   
     * {
         box-sizing: border-box
     }
@@ -354,6 +291,10 @@
         -webkit-animation-duration: 1.5s;
         animation-name: fade;
         animation-duration: 1.5s;
+    }
+    .header-link-right,a{
+      margin-right:0px;
+        
     }
 </style>
 
