@@ -18,8 +18,8 @@
 
 
     <p> @Html.Label("Experience in Years:")</p>
-    @Html.TextBox("Experience in Years", null, new { @class = "form-contal" })
-    @Html.ValidationMessage("Experience in Years", "", new { @class = "text-danger" })
+    @Html.TextBox("ExperiencinYears", null, new { @class = "form-contal" })
+    @Html.ValidationMessage("ExperiencinYears", "", new { @class = "text-danger" })
     <br />
 
 
@@ -41,11 +41,11 @@ new SelectListItem {Text ="Games Official",Value="8"},
     <br />
     <br />
     <p> @Html.Label("Justifying choosen roles")</p>
-    @Html.TextBox("Justifying choosen roles", null, new { @class = "form-contal" })
-    @Html.ValidationMessage("Justifying choosen roles", "", new { @class = "text-danger" })
+    @Html.TextBox("Justifying", null, new { @class = "form-contal" })
+    @Html.ValidationMessage("Justifying ", "", new { @class = "text-danger" })
     <br />
     <p> @Html.Label("Certification Levels:")</p>
-    @Html.DropDownList("Certification Levels", new List<SelectListItem>
+    @Html.DropDownList("CertificationLevels", new List<SelectListItem>
     {
 new SelectListItem {Text ="Level 0",Value="1"},
 new SelectListItem {Text ="Level 1",Value="2"},
@@ -53,18 +53,22 @@ new SelectListItem {Text ="Level 2",Value="3"},
 new SelectListItem {Text ="Level 3",Value="4"},
     }, "Select the Level")
 
-    @Html.ValidationMessage("City", "", new { @class = "text-danger" })
+    @Html.ValidationMessage("CertificationLevels", "", new { @class = "text-danger" })
     <br />
     <br />
 
     <p> @Html.Label("Do you have any ministry of background:")</p>
-    @Html.CheckBox("Do you have any ministry of background", true)
-    @Html.ValidationMessage("Do you have any ministry of background", "", new { @class = "text-danger" })
+    @Html.DropDownList("MinistryofBackground", new List<SelectListItem>
+        {
+        new SelectListItem {Text ="Yes",Value="1"},
+        new SelectListItem {Text ="NO",Value="2"},    }, "Click Yes or No")
+
+    @Html.ValidationMessage("MinistryofBackground", "", new { @class = "text-danger" })
     <br />
     <br />
     <p> @Html.Label("Additional skills:")</p>
-    @Html.TextBox("Additional skills", null, new { @class = "form-contal" })
-    @Html.ValidationMessage("Additional skills", "", new { @class = "text-danger" })
+    @Html.TextBox("AdditionalSkills", null, new { @class = "form-contal" })
+    @Html.ValidationMessage("AdditionalSkills", "", new { @class = "text-danger" })
     <br />
     <br />
     <center>

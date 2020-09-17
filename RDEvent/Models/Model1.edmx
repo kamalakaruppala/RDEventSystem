@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\KAMAL\SOURCE\REPOS\RDEVENTSYSTEM\RDEVENT\APP_DATA\DATABASE1.MDF.dbo.Addevent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Addevent">
+          <Key>
+            <PropertyRef Name="EventName" />
+            <PropertyRef Name="Region" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="TypeofEvent" />
+            <PropertyRef Name="NumberOfOfficialsNeeded" />
+          </Key>
+          <Property Name="EventName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Date" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TypeofEvent" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="NumberOfOfficialsNeeded" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Register">
+          <Key>
+            <PropertyRef Name="PhoneNumber" />
+          </Key>
+          <Property Name="FirstName" Type="varchar" MaxLength="20" />
+          <Property Name="LastName" Type="varchar" MaxLength="22" />
+          <Property Name="Street" Type="varchar" MaxLength="60" />
+          <Property Name="City" Type="varchar" MaxLength="25" />
+          <Property Name="Postal" Type="varchar" MaxLength="15" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="ExperiencinYears" Type="varchar" MaxLength="18" />
+          <Property Name="Roles" Type="varchar" MaxLength="10" />
+          <Property Name="NonRoles" Type="varchar" MaxLength="10" />
+          <Property Name="Justifying" Type="varchar" MaxLength="100" />
+          <Property Name="CertificationLevels" Type="varchar" MaxLength="12" />
+          <Property Name="MinistryofBackground" Type="varchar" MaxLength="12" />
+          <Property Name="AdditionalSkills" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="From" Type="date" Nullable="false" />
+          <Property Name="To" Type="date" Nullable="false" />
+          <Property Name="RegionsOfAvailability" Type="varchar" MaxLength="50" />
+          <Property Name="TypesOfGames" Type="varchar" MaxLength="22" />
+          <Property Name="PriorityOfRegions" Type="varchar" MaxLength="23" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Register" EntityType="Self.Register" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Addevent" EntityType="Self.Addevent" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Addevent].[EventName] AS [EventName], 
+    [Addevent].[Region] AS [Region], 
+    [Addevent].[Description] AS [Description], 
+    [Addevent].[Date] AS [Date], 
+    [Addevent].[City] AS [City], 
+    [Addevent].[TypeofEvent] AS [TypeofEvent], 
+    [Addevent].[NumberOfOfficialsNeeded] AS [NumberOfOfficialsNeeded]
+    FROM [dbo].[Addevent] AS [Addevent]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Register">
+          <Key>
+            <PropertyRef Name="PhoneNumber" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Postal" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExperiencinYears" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Roles" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NonRoles" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Justifying" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CertificationLevels" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="MinistryofBackground" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalSkills" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="From" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="To" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RegionsOfAvailability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypesOfGames" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="PriorityOfRegions" Type="String" MaxLength="23" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Addevent">
+          <Key>
+            <PropertyRef Name="EventName" />
+            <PropertyRef Name="Region" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="TypeofEvent" />
+            <PropertyRef Name="NumberOfOfficialsNeeded" />
+          </Key>
+          <Property Name="EventName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TypeofEvent" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NumberOfOfficialsNeeded" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Registers" EntityType="Self.Register" />
+          <EntitySet Name="Addevents" EntityType="Self.Addevent" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="Registers">
+            <EntityTypeMapping TypeName="Database1Model.Register">
+              <MappingFragment StoreEntitySet="Register">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Postal" ColumnName="Postal" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ExperiencinYears" ColumnName="ExperiencinYears" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="NonRoles" ColumnName="NonRoles" />
+                <ScalarProperty Name="Justifying" ColumnName="Justifying" />
+                <ScalarProperty Name="CertificationLevels" ColumnName="CertificationLevels" />
+                <ScalarProperty Name="MinistryofBackground" ColumnName="MinistryofBackground" />
+                <ScalarProperty Name="AdditionalSkills" ColumnName="AdditionalSkills" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="RegionsOfAvailability" ColumnName="RegionsOfAvailability" />
+                <ScalarProperty Name="TypesOfGames" ColumnName="TypesOfGames" />
+                <ScalarProperty Name="PriorityOfRegions" ColumnName="PriorityOfRegions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addevents">
+            <EntityTypeMapping TypeName="Database1Model.Addevent">
+              <MappingFragment StoreEntitySet="Addevent">
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="TypeofEvent" ColumnName="TypeofEvent" />
+                <ScalarProperty Name="NumberOfOfficialsNeeded" ColumnName="NumberOfOfficialsNeeded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
