@@ -17,5 +17,18 @@ namespace RDEvent.Controllers
         {
             return View();
         }
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+        public ActionResult ForgotCode()
+        {
+            return View();
+        }
+        public ActionResult NewPassword()
+        {
+            return View();
+        }
+
     }
 }

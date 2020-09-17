@@ -20,7 +20,7 @@
                 <div class="col-lg-2 col-md-2">
 
                     <div class="header__logo">
-                        <a href="./index.html"><img src="~/Content/RDANZI Logo 2.png.png" alt=""></a>
+                        <a href=""><img src="~/Content/RDANZI Logo 2.png.png" alt=""></a>
                     </div>
                 </div>
 
@@ -31,15 +31,17 @@
         </div>
 
     </header>
-    <section class="background-image">
+   
+    <div class="background-image">
         <div class="bg-image img1"> </div>
         <div class="bg-image img2"> </div>
 
         <div class="bg-text"> </div>
-    </section>
+    </div>
     <div class="container body-content">
         @RenderBody()
     </div>
+
     <footer class="social-footer">
         <div class="social-footer-left">
             <a href="#"> <img class="logo" src=""> </a>
@@ -54,13 +56,39 @@
         <div class="social-footer-icons">
             <ul class="menu simple">
 
-                <li> <a href="https://www.facebook.com/"> <i class="fa fa-facebook" aria-hidden="true"> </i> </a> </li>
-                <li> <a href="https://www.instagram.com/?hl=en"> <i class="fa fa-instagram" aria-hidden="true"> </i> </a> </li>
-                <li> <a href="#"> <i class="fa fa-mobile-phone" aria-hidden="true"> </i> </a> </li>
-                <li> <a href="https://twitter.com/?lang=en"> <i class="fa fa-twitter" aria-hidden="true"> </i> </a> </li>
+                <li> <a href="https://www.facebook.com/"> <img src="~/Content/Images/Faxebook.png" /> </a> </li>
+                <li> <a href="https://www.instagram.com/?hl=en"> <img src="~/Content/Images/Instaragam.jpg" />  </a> </li>
+                <li> <a href="#">  </a> <img src="~/Content/Images/Phone.png" /></li>
+                <li> <a href="https://twitter.com/?lang=en"><img src="~/Content/Images/Twitter.png" />  </a> </li>
             </ul>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+            <style>
+                .social-footer .social-footer-icons .fa:hover {
+                    color: #4a4a4a;
+                    transition: color 0.3s ease-in;
+                    font-size: 1.3rem;
+                    color: #fefefe;
+                    color: #808080;
+                    transition: color 0.3s ease-in;
+                }
+
+                .social-footer .social-footer-icons .fa {
+                    font-size: 5rem;
+                    color: #fefefe;
+                    margin-right: 0 10px 0;
+                    padding-right: 0.5em;
+                }
+
+                .social-footer .social-footer-icons li:last-of-type, ul, li {
+                    margin-right: 0;
+                    display: inline-block;
+                }
+
+                .social-footer .social-footer-icons img {
+                    width: 50px;
+                    height: 50px;
+                }
+            </style>
         </div>
     </footer>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
@@ -68,39 +96,3 @@
 
 </body>
 </html>
-<style>
-    h1 {
-    text-align:center;
-    font-size: 30px;
-
-}
-     .background-image body, html {
-        height: 100%;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    * background-image {
-        box-sizing: border-box;
-    }
-
-    background-image .bg-image {
-        /* Full height */
-        height: 50%;
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    /* Images used */
-    .img1 {
-        background-image: url("/Content/Images/Events.jpg");
-    }
-
-    .img2 {
-        background-image: url("'/Content/Images/Roller.Background 2.jpg'");
-    }
-
-
-</style>

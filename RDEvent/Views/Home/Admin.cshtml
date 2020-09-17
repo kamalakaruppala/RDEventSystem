@@ -19,9 +19,9 @@
 
             <div class="header-link-right">
 
-               
+
                 &nbsp;&nbsp;
-                <a href="~/Home/Index"><i></i>Logout</a>
+                <a href="~/Home/Index" class="site-btn"><i></i>Logout</a>
 
             </div>
         </div>
@@ -33,61 +33,20 @@
 
         <div class="bg-text"></div>
     </section>
-    <section class="gallery">
-        <div class="slideshow-container">
 
-            <!-- Full-width images with number and caption text -->
-            <div class="mySlides fade">
-                <div class="numbertext">1 / 4</div>
-                <img src="~/Content/Images/Gallery1.jpg" style="width:100%">
-                <div class="text">R1</div>
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">2 / 4</div>
-                <img src="~/Content/Images/Gallery2.jpg" style="width:100%">
-                <div class="text">R2</div>
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">3 / 4</div>
-                <img src="~/Content/Images/Gallery3.jpg" style="width: 100% ">
-                <div class="text">R3</div>
-            </div>
-            <div class="mySlides fade">
-                <div class="numbertext">3 / 4</div>
-                <img src="~/Content/Images/Gallery4.jpg" style="width:100%">
-                <div class="text">R4</div>
-            </div>
-
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <br>
-
-        <!-- The dots/circles -->
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span>
-
-        </div>
-    </section>
     <section class="Events">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="column-sm-2">
                         <a href="/Events/AdminEvents">
-                            <img src="~/Content/Images/Events.jpg" style="width:25%">
+                            <img src="~/Content/Images/Events.jpg" style="width:35%">
                         </a>
                         <a href="/News/AdminNews">
-                            <img src="~/Content/Images/News.png" style="width:20%">
+                            <img src="~/Content/Images/News.png" style="width:25%">
                         </a>
                         <a href="https://www.google.com/maps/search/?api=1&parameters">
-                            <img src="~/Content/Images/Maps.png" style="width:15%">
+                            <img src="~/Content/Images/Maps.png" style="width:20%">
                         </a>
                     </div>
 
@@ -105,7 +64,7 @@
                         <p>
                             Game 1  . Auckland   . Region1
                         </p>
-                        <a href="#" class="primary-btn">Register</a>
+                       
                     </div>
                 </div>
             </div>
@@ -130,41 +89,15 @@
             </div>
         </div>
     </section>
-
-    <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-        }
-    </script>
-
+   
 </body>
 
 </html>
 
 <style>
+    .column-sm-2 img {
+            margin-top: 120px;
+        }
 
     * {
         box-sizing: border-box;
@@ -193,33 +126,7 @@
         clear: both;
     }
 
-    .background-image body, html {
-        height: 100%;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    * background-image {
-        box-sizing: border-box;
-    }
-
-    background-image .bg-image {
-        /* Full height */
-        height: 50%;
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    /* Images used */
-    .img1 {
-        background-image: url("/Content/Images/Roller.Background.jpg");
-    }
-
-    .img2 {
-        background-image: url("'/Content/Images/Roller.Background 2.jpg'");
-    }
+   
 
 
     * {
@@ -239,7 +146,7 @@
         vertical-align: middle;
     }
 
-    /* Slideshow container */
+    /* Slideshow containert */
     .slideshow-container {
         max-width: 1000px;
         position: relative;

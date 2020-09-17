@@ -7,30 +7,34 @@
     <h1 Style="background-color: black;color:pink;"> Sign Up </h1>
 </center>
 <body>
-    
 
-        <br />
-        <br />
+
+    <br />
+    <br />
+    <center>
         <div class="container">
-            <label for="Email"><b>Email</b></label>
+            <label for="Email"><b>Email</b></label>&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Enter Email" name="Email" required>
             <br />
             <br />
-            <label for="psw"><b>Choose Password</b></label>
+            <label for="psw"><b>Choose Password</b></label>&nbsp;
             &nbsp;<input type="password" placeholder="Enter Password" name="psw" required>
             <br />
             <br />
-            <label for="psw"><b>Repeat Password</b></label>
+            <label for="psw"><b>Repeat Password</b></label>&nbsp;
             &nbsp;<input type="password" placeholder="Repeat your Password" name="psw" required>
             <br />
-            <br
+            <br />
         </div>
-
-        <p> By proceeding you also agree to the terms of service and private policy</p>
+        <label>
+            <input type="checkbox" checked="checked" name="remember">  By proceeding you also agree to the terms of service and private policy
+        </label>
         <br />
+        <br />
+    </center>
 
-
+    <center>
         <p> <a href="~/Register/verification"> <div class="button"><center>Sign Up</center>  </div> </a></p>
 
 
@@ -38,67 +42,71 @@
         <p><center>Or</center></p>
 
         <p> <a href="https://www.google.com/account/about/"> <div class="button"> <center>Sign Up with Email</center> </div> </a> <br /></p>
+    </center>
+    <p>
+        <center>
+            <strong>If you a existing user!</strong><a href="/Login/Index/">Click Here</a>.
+            </center>
+</p><br />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-        <style>
-            * {
-                box-sizing: border-box;
-                
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+        }
+
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 30%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
             }
 
-            /* Add padding to containers */
-            .container {
-                padding: 16px;
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit/register button */
+        .button {
+            background-color: #000000;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 20%;
+            opacity: 0.9;
+        }
+
+            .button:hover {
+                opacity: 1;
             }
 
-            /* Full-width input fields */
-            input[type=text], input[type=password] {
-                width: 100%;
-                padding: 15px;
-                margin: 5px 0 22px 0;
-                display: inline-block;
-                border: none;
-                background: #f1f1f1;
-            }
+        /* Add a blue text color to links */
+        a {
+            color: dodgerblue;
+        }
 
-                input[type=text]:focus, input[type=password]:focus {
-                    background-color: #ddd;
-                    outline: none;
-                }
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+    </style>
 
-            /* Overwrite default styles of hr */
-            hr {
-                border: 1px solid #f1f1f1;
-                margin-bottom: 25px;
-            }
-
-            /* Set a style for the submit/register button */
-            .button {
-                background-color: #000000;
-                color: white;
-                padding: 16px 20px;
-                margin: 8px 0;
-                border: none;
-                cursor: pointer;
-                width: 100%;
-                opacity: 0.9;
-            }
-
-                .button:hover {
-                    opacity: 1;
-                }
-
-            /* Add a blue text color to links */
-            a {
-                color: white;
-            }
-
-            /* Set a grey background color and center the text of the "sign in" section */
-            .signin {
-                background-color: #f1f1f1;
-                text-align: center;
-            }
-        </style>
-       
 </body>
 </html>
 

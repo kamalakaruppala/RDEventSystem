@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "NonSkating";
+}
+
+
+<script src="~/Models/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<html>
+<body>
+    <center>
+        <h1 Style="background-color: black;color:pink;"> Enter your Work History & Details </h1>
+    </center>
+    <br />
+    <h2>Non-Skating Officials Roles</h2>
+
+    @Html.AntiForgeryToken()
+
+
+
+
+    <p> @Html.Label("Experience in Years:")</p>
+    @Html.TextBox("Experience in Years", null, new { @class = "form-contal" })
+    @Html.ValidationMessage("Experience in Years", "", new { @class = "text-danger" })
+    <br />
+
+
+    <p> @Html.Label("Roles:")</p>
+    @Html.DropDownList("Roles", new List<SelectListItem>
+    {
+new SelectListItem {Text ="Head NSO",Value="1"},
+new SelectListItem {Text ="Penalty Tracker",Value="2"},
+new SelectListItem {Text ="Penalty Wrangler",Value="3"},
+new SelectListItem {Text ="Inside White Board",Value="4"},
+new SelectListItem {Text ="Outside White Board",Value="5"},
+new SelectListItem {Text ="Jam Timer",Value="6"},
+new SelectListItem {Text ="ScoreKeeper",Value="7"},
+new SelectListItem {Text ="Scoreboard Opertor",Value="8"},
+new SelectListItem {Text ="Penalty Box Manager",Value="9"},
+new SelectListItem {Text ="Penalty Box Timer",Value="10"},
+new SelectListItem {Text ="Lineup Tracker",Value="11"},
+new SelectListItem {Text ="Alternate NSO",Value="12"},
+new SelectListItem {Text ="Tournament Head NSO",Value="13"},
+new SelectListItem {Text ="Alternate NSO",Value="14"},
+
+
+    }, "Select the Role")
+
+    @Html.ValidationMessage("Roles", "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <p> @Html.Label("Justifying choosen roles")</p>
+    @Html.TextBox("Justifying choosen roles", null, new { @class = "form-contal" })
+    @Html.ValidationMessage("Justifying choosen roles", "", new { @class = "text-danger" })
+    <br />
+    <p> @Html.Label("Certification Levels:")</p>
+    @Html.DropDownList("Certification Levels", new List<SelectListItem>
+    {
+new SelectListItem {Text ="Level 0",Value="1"},
+new SelectListItem {Text ="Level 1",Value="2"},
+new SelectListItem {Text ="Level 2",Value="3"},
+new SelectListItem {Text ="Level 3",Value="4"},
+    }, "Select the Level")
+
+    @Html.ValidationMessage("City", "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    <p> @Html.Label("Do you have any ministry of background:")</p>
+    @Html.CheckBox("Do you have any ministry of background", true)
+    @Html.ValidationMessage("Do you have any ministry of background", "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <p> @Html.Label("Additional skills:")</p>
+    @Html.TextBox("Additional skills", null, new { @class = "form-contal" })
+    @Html.ValidationMessage("Additional skills", "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <center>
+        <p> <a href="~/Profile/Availability"> <div class="button"><center>Next</center>  </div> </a></p>
+    </center>
+  
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Add padding to containers */
+            .container {
+                padding: 16px;
+            }
+
+            /* Full-width input fields */
+            .form-contal, text-danger {
+                width: 30%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
+
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+            /* Overwrite default styles of hr */
+            hr {
+                border: 1px solid #f1f1f1;
+                margin-bottom: 25px;
+            }
+
+            /* Set a style for the submit/register button */
+            .button {
+                background-color: #000000;
+                color: black;
+                padding: 16px 20px;
+                margin: 20px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+            }
+
+                .button:hover {
+                    opacity: 1;
+                }
+
+            /* Add a blue text color to links */
+            a {
+                color: white;
+            }
+
+            /* Set a grey background color and center the text of the "sign in" section */
+            .signin {
+                background-color: #f1f1f1;
+                text-align: center;
+            }
+        </style>
+</body>
+</html>

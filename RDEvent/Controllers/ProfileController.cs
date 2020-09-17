@@ -17,6 +17,10 @@ namespace RDEvent.Controllers
         {
             return View();
         }
+        public ActionResult NonSkating()
+        {
+            return View();
+        }
         public ActionResult Availability()
         {
             return View();

@@ -16,23 +16,57 @@
     @Html.TextBox("Event Name", null, new { @class = "form-contal" })
     @Html.ValidationMessage("Event Name", "", new { @class = "text-danger" })
     <br />
-    
+
 
     <p> @Html.Label("Region", "Region:")</p>
-    @Html.TextBox("Region", null, new { @class = "form-contal" })
+    @Html.DropDownList("Region", new List<SelectListItem>
+   {
+new SelectListItem {Text ="BOP",Value="1"},
+new SelectListItem {Text ="Central 1",Value="2"},
+new SelectListItem {Text ="Central 2",Value="3"},
+new SelectListItem {Text ="Northern",Value="4"},
+new SelectListItem {Text ="Southern 1",Value="5"},
+new SelectListItem {Text ="Southern 2",Value="6"},
+new SelectListItem {Text ="Wellington",Value="7"},
+
+   }, "Select the Region")
+
     @Html.ValidationMessage("Region", "", new { @class = "text-danger" })
     <br />
-    
+    <br />
     <p> @Html.Label("Date", "Date:")</p>
     @Html.TextBox("Date", null, new { @class = "form-contal" })
     @Html.ValidationMessage("Date", "", new { @class = "text-danger" })
     <br />
-    
+
     <p> @Html.Label("City", "City:")</p>
-    @Html.TextBox("City", null, new { @class = "form-contal" })
+    @Html.DropDownList("City", new List<SelectListItem>
+  {
+new SelectListItem {Text ="Auckland",Value="1"},
+new SelectListItem {Text ="Christchurch",Value="2"},
+new SelectListItem {Text ="Dunedin",Value="3"},
+new SelectListItem {Text ="Hamilton",Value="4"},
+new SelectListItem {Text ="Kapiti",Value="5"},
+new SelectListItem {Text ="Levin",Value="6"},
+new SelectListItem {Text ="Nelson",Value="7"},
+new SelectListItem {Text ="Napier",Value="8"},
+new SelectListItem {Text ="NewPlymouth",Value="9"},
+new SelectListItem {Text ="Palmerston North",Value="10"},
+new SelectListItem {Text ="Queenstown",Value="11"},
+new SelectListItem {Text ="Rotorua",Value="12"},
+new SelectListItem {Text ="Timaru",Value="13"},
+new SelectListItem {Text ="Taupo",Value="14"},
+new SelectListItem {Text ="Tauranga",Value="15"},
+new SelectListItem {Text ="UpperHutt",Value="16"},
+new SelectListItem {Text ="Wellington",Value="17"},
+new SelectListItem {Text ="Whakatane",Value="18"},
+new SelectListItem {Text ="Wanganui",Value="19"},
+new SelectListItem {Text ="Whangarei",Value="20"},
+
+  }, "Select the City")
     @Html.ValidationMessage("City", "", new { @class = "text-danger" })
     <br />
-    
+
     <center>
         <p> <a href="/Home/Admin/"> <div class="button"><center>Submit</center>  </div> </a></p>
     </center>
@@ -52,7 +86,7 @@
 
         /* Full-width input fields */
         .form-contal, text-danger {
-            width: 40%;
+            width: 30%;
             padding: 15px;
             margin: 5px 0 22px 0;
             display: inline-block;

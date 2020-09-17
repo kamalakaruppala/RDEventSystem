@@ -144,6 +144,21 @@ ol {
         border: 2px solid #5c00ce;
         color: #111111;
     }
+.primary1-btn {
+    display: inline-block;
+    font-size: 15px;
+    
+   margin-right:0px;
+    color: #ffffff;
+    background: #000000;
+    letter-spacing: 2px;
+}
+
+    .primary1-btn.border-btn {
+        background: transparent;
+        border: 2px solid #5c00ce;
+        color: #111111;
+    }
 
 .site-btn {
     font-size: 15px;
@@ -821,37 +836,7 @@ dcrumb-option {
         margin-bottom: 40px;
     }
 
-    .footer {
-        height: auto;
-    }
-
-    .footer__social::before {
-        display: none;
-    }
-
-    .footer__social::after {
-        display: none;
-    }
-
-    .player_bars {
-        width: 240px;
-        margin-right: 20px;
-    }
-
-    .jp-seek-bar > div {
-        width: 140px;
-    }
-
-    .countdown__item {
-        margin-right: 0;
-        margin-bottom: 30px;
-        width: 50%;
-        float: left;
-    }
-
-    .footer__social {
-        text-align: left;
-    }
+   
 
     .skills__content {
         height: auto;
@@ -957,10 +942,7 @@ dcrumb-option {
         padding-bottom: 940px;
     }
 
-    .footer {
-        margin-top: -940px;
-        background-position: top 0 left 19%;
-    }
+   
 }
 
 /* Small Device = 320px */
@@ -1079,33 +1061,55 @@ dcrumb-option {
 }
 
 .social-footer-middle, li, ul {
-    text-decoration-color: white;
+    text-decoration-color: #f2f2f2;
     display: inline-block;
     padding-right: 2em;
 }
 
-    .social-footer-middle .a {
+    .social-footer-middle a:focus, a:hover {
         border-color: white;
-        color:#fefefe;
+        color:white;
+        
     }
 
-.social-footer .social-footer-icons li:last-of-type, ul, li {
-    margin-right: 0;
-    display: inline-block;
+.background-image body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.social-footer .social-footer-icons .fa {
-    font-size: 5rem;
-    color: #fefefe;
-    margin-right: 0 10px 0;
-    padding-right: 0.5em;
+* background-image {
+    box-sizing: border-box;
 }
 
-    .social-footer .social-footer-icons .fa:hover {
-        color: #4a4a4a;
-        transition: color 0.3s ease-in;
-        font-size: 1.3rem;
-        color: #fefefe;
-        color: #808080;
-        transition: color 0.3s ease-in;
-    }
+background-image .bg-image {
+    /* Full height */
+    height: 50%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Images used */
+.img1 {
+    background-image: url("../Content/Images/Roller.Background.jpg");
+}
+
+.img2 {
+    background-image: url("'../Content/Images/Roller.Background 2.jpg");
+}
+
+
+.parallax {
+    /* The image used */
+    background-image: url("../Content/Images/footer-bg.png");
+    background-image: url("../Content/Images/footer-bg.png");
+    /* Set a specific height */
+    min-height: 500px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

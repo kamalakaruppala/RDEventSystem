@@ -9,120 +9,126 @@
 <body>
     <center>
         <h1 Style="background-color: black;color:pink;"> Enter your Work History & Details </h1>
-        </center>
-            <br />
-            @Html.AntiForgeryToken()
-
-            <p> @Html.Label("Company Name:")</p>
-            @Html.TextBox("Company Name", null, new { @class = "form-contal" })
-            @Html.ValidationMessage("Company Name", "", new { @class = "text-danger" })
-            <br />
+    </center>
+    <br />
+    <h2>Skating Officials Roles</h2>
+    @Html.AntiForgeryToken()
 
 
-            <p> @Html.Label("Experience in Years:")</p>
-            @Html.TextBox("Experience in Years", null, new { @class = "form-contal" })
-            @Html.ValidationMessage("Experience in Years", "", new { @class = "text-danger" })
-            <br />
 
 
-            <p> @Html.Label("Roles:")</p>
-            @Html.DropDownList("Roles", new List<SelectListItem>
-            {
-        new SelectListItem {Text ="Referee",Value="1"},
-        new SelectListItem {Text ="Scoreboard Monitor",Value="2"},
-        new SelectListItem {Text ="Non-Skatting Staff",Value="3"},
-        new SelectListItem {Text ="Skatting Staff",Value="4"},
-            }, "Select the Role")
-
-            @Html.ValidationMessage("Roles", "", new { @class = "text-danger" })
-            <br />
-            <br />
-
-            <p> @Html.Label("Certification Levels:")</p>
-            @Html.DropDownList("Certification Levels", new List<SelectListItem>
-            {
-        new SelectListItem {Text ="Level 0",Value="1"},
-        new SelectListItem {Text ="Level 1",Value="2"},
-        new SelectListItem {Text ="Level 2",Value="3"},
-        new SelectListItem {Text ="Level 3",Value="4"},
-            }, "Select the Level")
-
-            @Html.ValidationMessage("City", "", new { @class = "text-danger" })
-            <br />
-            <br />
-
-            <p> @Html.Label("Do you have any ministry of background:")</p>
-            @Html.CheckBox("Do you have any ministry of background", true)
-            @Html.ValidationMessage("Do you have any ministry of background", "", new { @class = "text-danger" })
-            <br />
-            <br />
-            <p> @Html.Label("Additional skills:")</p>
-            @Html.TextBox("Additional skills", null, new { @class = "form-contal" })
-            @Html.ValidationMessage("Additional skills", "", new { @class = "text-danger" })
-            <br />
-            <br />
-            <center>
-                <p> <a href="~/Profile/Availability"> <div class="button"><center>Next</center>  </div> </a></p>
-            </center>
+    <p> @Html.Label("Experience in Years:")</p>
+    @Html.TextBox("Experience in Years", null, new { @class = "form-contal" })
+    @Html.ValidationMessage("Experience in Years", "", new { @class = "text-danger" })
+    <br />
 
 
-            <style>
-                * {
-                    box-sizing: border-box;
-                }
+    <p> @Html.Label("Roles:")</p>
+    @Html.DropDownList("Roles", new List<SelectListItem>
+    {
+new SelectListItem {Text ="Head Referee",Value="1"},
+new SelectListItem {Text ="Jammer Referee",Value="2"},
+new SelectListItem {Text ="Inside Pack Referee",Value="3"},
+new SelectListItem {Text ="Outside Pack Referee",Value="4"},
+new SelectListItem {Text ="Alternate Referee",Value="5"},
+new SelectListItem {Text ="TournamentHead Referee",Value="6"},
+new SelectListItem {Text ="Crew Head Referee",Value="7"},
+new SelectListItem {Text ="Games Official",Value="8"},
 
-                /* Add padding to containers */
-                .container {
-                    padding: 16px;
-                }
+    }, "Select the Role")
 
-                /* Full-width input fields */
-                .form-contal, text-danger {
-                    width: 100%;
-                    padding: 15px;
-                    margin: 5px 0 22px 0;
-                    display: inline-block;
-                    border: none;
-                    background: #f1f1f1;
-                }
+    @Html.ValidationMessage("Roles", "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <p> @Html.Label("Justifying choosen roles")</p>
+    @Html.TextBox("Justifying choosen roles", null, new { @class = "form-contal" })
+    @Html.ValidationMessage("Justifying choosen roles", "", new { @class = "text-danger" })
+    <br />
+    <p> @Html.Label("Certification Levels:")</p>
+    @Html.DropDownList("Certification Levels", new List<SelectListItem>
+    {
+new SelectListItem {Text ="Level 0",Value="1"},
+new SelectListItem {Text ="Level 1",Value="2"},
+new SelectListItem {Text ="Level 2",Value="3"},
+new SelectListItem {Text ="Level 3",Value="4"},
+    }, "Select the Level")
 
-                input[type=text]:focus, input[type=password]:focus {
-                    background-color: #ddd;
-                    outline: none;
-                }
+    @Html.ValidationMessage("City", "", new { @class = "text-danger" })
+    <br />
+    <br />
 
-                /* Overwrite default styles of hr */
-                hr {
-                    border: 1px solid #f1f1f1;
-                    margin-bottom: 25px;
-                }
+    <p> @Html.Label("Do you have any ministry of background:")</p>
+    @Html.CheckBox("Do you have any ministry of background", true)
+    @Html.ValidationMessage("Do you have any ministry of background", "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <p> @Html.Label("Additional skills:")</p>
+    @Html.TextBox("Additional skills", null, new { @class = "form-contal" })
+    @Html.ValidationMessage("Additional skills", "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <center>
+        <p> <a href="~/Profile/Availability"> <div class="button"><center>Next</center>  </div> </a></p>
+    </center>
 
-                /* Set a style for the submit/register button */
-                .button {
-                    background-color: #000000;
-                    color: black;
-                    padding: 16px 20px;
-                    margin: 20px 0;
-                    border: none;
-                    cursor: pointer;
-                    width: 20%;
-                    opacity: 0.9;
-                }
 
-                    .button:hover {
-                        opacity: 1;
-                    }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-                /* Add a blue text color to links */
-                a {
-                    color: white;
-                }
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+        }
 
-                /* Set a grey background color and center the text of the "sign in" section */
-                .signin {
-                    background-color: #f1f1f1;
-                    text-align: center;
-                }
-            </style>
+        /* Full-width input fields */
+        .form-contal, text-danger {
+            width: 30%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit/register button */
+        .button {
+            background-color: #000000;
+            color: black;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border: none;
+            cursor: pointer;
+            width: 20%;
+            opacity: 0.9;
+        }
+
+            .button:hover {
+                opacity: 1;
+            }
+
+        /* Add a blue text color to links */
+        a {
+            color: white;
+        }
+
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+    </style>
 </body>
 </html>
