@@ -1,4 +1,5 @@
-﻿@{
+﻿@model RDEvent.Models.Register
+@{
     ViewBag.Title = "Experience";
 }
 
@@ -12,127 +13,132 @@
     </center>
     <br />
     <h2>Skating Officials Roles</h2>
-    @Html.AntiForgeryToken()
-
-
-
-
-    <p> @Html.Label("Experience in Years:")</p>
-    @Html.TextBox("ExperiencinYears", null, new { @class = "form-contal" })
-    @Html.ValidationMessage("ExperiencinYears", "", new { @class = "text-danger" })
     <br />
-
-
-    <p> @Html.Label("Roles:")</p>
-    @Html.DropDownList("Roles", new List<SelectListItem>
+    @using (Html.BeginForm("Experience", "Profile", FormMethod.Post))
     {
-new SelectListItem {Text ="Head Referee",Value="1"},
-new SelectListItem {Text ="Jammer Referee",Value="2"},
-new SelectListItem {Text ="Inside Pack Referee",Value="3"},
-new SelectListItem {Text ="Outside Pack Referee",Value="4"},
-new SelectListItem {Text ="Alternate Referee",Value="5"},
-new SelectListItem {Text ="TournamentHead Referee",Value="6"},
-new SelectListItem {Text ="Crew Head Referee",Value="7"},
-new SelectListItem {Text ="Games Official",Value="8"},
+        @Html.AntiForgeryToken()
 
-    }, "Select the Role")
 
-    @Html.ValidationMessage("Roles", "", new { @class = "text-danger" })
-    <br />
-    <br />
-    <p> @Html.Label("Justifying choosen roles")</p>
-    @Html.TextBox("Justifying", null, new { @class = "form-contal" })
-    @Html.ValidationMessage("Justifying ", "", new { @class = "text-danger" })
-    <br />
-    <p> @Html.Label("Certification Levels:")</p>
-    @Html.DropDownList("CertificationLevels", new List<SelectListItem>
-    {
-new SelectListItem {Text ="Level 0",Value="1"},
-new SelectListItem {Text ="Level 1",Value="2"},
-new SelectListItem {Text ="Level 2",Value="3"},
-new SelectListItem {Text ="Level 3",Value="4"},
-    }, "Select the Level")
 
-    @Html.ValidationMessage("CertificationLevels", "", new { @class = "text-danger" })
-    <br />
-    <br />
 
-    <p> @Html.Label("Do you have any ministry of background:")</p>
-    @Html.DropDownList("MinistryofBackground", new List<SelectListItem>
+        <p> @Html.Label("Experience in Years:")</p>
+        @Html.TextBoxFor(db => db.ExperiencinYears, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(db => db.ExperiencinYears, "", new { @class = "text-danger" })
+        <br />
+        <p> @Html.Label("Roles:")</p>
+        <ul class="list-group">
+            <li class="list-group-item-heading active"></li>
+
+            @foreach (var Roles in ViewBag.RolesList)
+
+            {
+                <li class="list-group-item">
+                    <div class="checkbox">
+                        <input type="checkbox" id="check_@Roles" checked="@Roles.IsAvailable" />
+                        <label for="check_@Roles.RolesID">@Roles.RolesList</label>
+                    </div>
+
+                </li>
+            }
+        </ul>
+        <br />
+        <br />
+
+        <p> @Html.Label("Justifying choosen roles")</p>
+        @Html.TextBoxFor(db => db.Justifying, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(db => db.Justifying, "", new { @class = "text-danger" })
+        <br />
+        <p> @Html.Label("Certification Levels:")</p>
+        @Html.DropDownList("CertificationLevels", new List<SelectListItem>
         {
-        new SelectListItem {Text ="Yes",Value="1"},
-        new SelectListItem {Text ="NO",Value="2"},    }, "Click Yes or No")
+    new SelectListItem {Text ="Level 0",Value="1"},
+    new SelectListItem {Text ="Level 1",Value="2"},
+    new SelectListItem {Text ="Level 2",Value="3"},
+    new SelectListItem {Text ="Level 3",Value="4"},
+        }, "Select the Level")
 
-    @Html.ValidationMessage("MinistryofBackground", "", new { @class = "text-danger" })
-    <br />
-    <br />
-    <p> @Html.Label("Additional skills:")</p>
-    @Html.TextBox("AdditionalSkills", null, new { @class = "form-contal" })
-    @Html.ValidationMessage("AdditionalSkills", "", new { @class = "text-danger" })
-    <br />
-    <br />
-    <center>
-        <p> <a href="~/Profile/Availability"> <div class="button"><center>Next</center>  </div> </a></p>
-    </center>
+        @Html.ValidationMessageFor(db => db.CertificationLevels, "", new { @class = "text-danger" })
+        <br />
+        <br />
+
+        <p> @Html.Label("Do you have any ministry of background:")</p>
+        @Html.DropDownListFor(db => db.MinistryofBackground, new List<SelectListItem>
+            {
+            new SelectListItem {Text ="Yes",Value="1"},
+            new SelectListItem {Text ="NO",Value="2"},    }, "Click Yes or No")
+
+        @Html.ValidationMessageFor(db => db.MinistryofBackground, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        <p> @Html.Label("Additional skills:")</p>
+        @Html.TextBoxFor(db => db.AdditionalSkills, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(db => db.AdditionalSkills, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        <center>
+            <p> <a href="~/Profile/Availability"> <div class="button"><center>Next</center>  </div> </a></p>
+        </center>
 
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        /* Add padding to containers */
-        .container {
-            padding: 16px;
-        }
-
-        /* Full-width input fields */
-        .form-contal, text-danger {
-            width: 30%;
-            padding: 15px;
-            margin: 5px 0 22px 0;
-            display: inline-block;
-            border: none;
-            background: #f1f1f1;
-        }
-
-        input[type=text]:focus, input[type=password]:focus {
-            background-color: #ddd;
-            outline: none;
-        }
-
-        /* Overwrite default styles of hr */
-        hr {
-            border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
-        }
-
-        /* Set a style for the submit/register button */
-        .button {
-            background-color: #000000;
-            color: black;
-            padding: 16px 20px;
-            margin: 20px 0;
-            border: none;
-            cursor: pointer;
-            width: 20%;
-            opacity: 0.9;
-        }
-
-            .button:hover {
-                opacity: 1;
+        <style>
+            * {
+                box-sizing: border-box;
             }
 
-        /* Add a blue text color to links */
-        a {
-            color: white;
-        }
+            /* Add padding to containers */
+            .container {
+                padding: 16px;
+            }
 
-        /* Set a grey background color and center the text of the "sign in" section */
-        .signin {
-            background-color: #f1f1f1;
-            text-align: center;
-        }
-    </style>
+            /* Full-width input fields */
+            .form-contal, text-danger {
+                width: 30%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
+
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+            /* Overwrite default styles of hr */
+            hr {
+                border: 1px solid #f1f1f1;
+                margin-bottom: 25px;
+            }
+
+            /* Set a style for the submit/register button */
+            .button {
+                background-color: #000000;
+                color: black;
+                padding: 16px 20px;
+                margin: 20px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+            }
+
+                .button:hover {
+                    opacity: 1;
+                }
+
+            /* Add a blue text color to links */
+            a {
+                color: white;
+            }
+
+            /* Set a grey background color and center the text of the "sign in" section */
+            .signin {
+                background-color: #f1f1f1;
+                text-align: center;
+            }
+        </style>
+    }
 </body>
 </html>
+

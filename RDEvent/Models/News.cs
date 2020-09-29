@@ -12,15 +12,10 @@ namespace RDEvent.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Addevent
+    public partial class News
     {
-        public string EventName { get; set; }
-        public string Region { get; set; }
-        public string Description { get; set; }
-        public string Date { get; set; }
-        public string City { get; set; }
-        public string TypeofEvent { get; set; }
-        public string NumberOfOfficialsNeeded { get; set; }
-        public int EventID { get; set; }
+        public int NewsID { get; set; }
+        public string NewsTitle { get; set; }
+        public string NewsContent { get; set; }
     }
 }

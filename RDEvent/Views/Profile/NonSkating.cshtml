@@ -1,8 +1,9 @@
-﻿
+﻿@model RDEvent.Models.Register
 @{
+
+
     ViewBag.Title = "NonSkating";
 }
-
 
 <script src="~/Models/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
@@ -14,73 +15,75 @@
     </center>
     <br />
     <h2>Non-Skating Officials Roles</h2>
-
-    @Html.AntiForgeryToken()
-
-
-
-
-    <p> @Html.Label("Experience in Years:")</p>
-    @Html.TextBox("ExperiencinYears", null, new { @class = "form-contal" })
-    @Html.ValidationMessage("ExperiencinYears", "", new { @class = "text-danger" })
     <br />
-
-
-    <p> @Html.Label("Roles:")</p>
-    @Html.DropDownList("NonRoles", new List<SelectListItem>
+    @using (Html.BeginForm("NonSkating", "Profile", FormMethod.Post))
     {
-new SelectListItem {Text ="Head NSO",Value="1"},
-new SelectListItem {Text ="Penalty Tracker",Value="2"},
-new SelectListItem {Text ="Penalty Wrangler",Value="3"},
-new SelectListItem {Text ="Inside White Board",Value="4"},
-new SelectListItem {Text ="Outside White Board",Value="5"},
-new SelectListItem {Text ="Jam Timer",Value="6"},
-new SelectListItem {Text ="ScoreKeeper",Value="7"},
-new SelectListItem {Text ="Scoreboard Opertor",Value="8"},
-new SelectListItem {Text ="Penalty Box Manager",Value="9"},
-new SelectListItem {Text ="Penalty Box Timer",Value="10"},
-new SelectListItem {Text ="Lineup Tracker",Value="11"},
-new SelectListItem {Text ="Alternate NSO",Value="12"},
-new SelectListItem {Text ="Tournament Head NSO",Value="13"},
-new SelectListItem {Text ="Alternate NSO",Value="14"},
+
+        @Html.AntiForgeryToken()
 
 
-    }, "Select the Role")
 
-    @Html.ValidationMessage("NonRoles", "", new { @class = "text-danger" })
-    <br />
-    <br />
-    <p> @Html.Label("Justifying choosen roles")</p>
-    @Html.TextBox("Justifying ", null, new { @class = "form-contal" })
-    @Html.ValidationMessage("Justifying", "", new { @class = "text-danger" })
-    <br />
-    <p> @Html.Label("Certification Levels:")</p>
-    @Html.DropDownList("CertificationLevels", new List<SelectListItem>
-    {
-new SelectListItem {Text ="Level 0",Value="1"},
-new SelectListItem {Text ="Level 1",Value="2"},
-new SelectListItem {Text ="Level 2",Value="3"},
-new SelectListItem {Text ="Level 3",Value="4"},
-    }, "Select the Level")
 
-    @Html.ValidationMessage("CertificationLevels", "", new { @class = "text-danger" })
-    <br />
-    <br />
+        <p> @Html.Label("Experience in Years:")</p>
+        @Html.TextBoxFor(db => db.ExperiencinYears, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(db => db.ExperiencinYears, "", new { @class = "text-danger" })
+        <br />
+        <div class="panel panel-body" style="min-height:256px"></div>
 
-    <p> @Html.Label("Do you have any ministry of background:")</p>
-    @Html.CheckBox("MinistryofBackground", true)
-    @Html.ValidationMessage("MinistryofBackground", "", new { @class = "text-danger" })
-    <br />
-    <br />
-    <p> @Html.Label("Additional skills:")</p>
-    @Html.TextBox("AdditionalSkills", null, new { @class = "form-contal" })
-    @Html.ValidationMessage("AdditionalSkills", "", new { @class = "text-danger" })
-    <br />
-    <br />
-    <center>
-        <p> <a href="~/Profile/Availability"> <div class="button"><center>Next</center>  </div> </a></p>
-    </center>
-  
+        <p> @Html.Label("NonRoles:")</p>
+        <ul class="list-group">
+            <li class="list-group-item-heading active"></li>
+
+            @foreach (var NonRoles in ViewBag.RolesList)
+
+            {
+                <li class="list-group-item">
+                    <div class="checkbox">
+                        <input type="checkbox" id="check_@NonRoles.NonRolesID" checked="@NonRoles.IsAvailable" />
+                        <label for="check_@NonRoles.NonRolesID">@NonRoles.NonRolesList</label>
+                    </div>
+
+                </li>
+            }
+        </ul>
+
+
+        <br />
+        <br />
+        <p> @Html.Label("Justifying choosen roles")</p>
+        @Html.TextBoxFor(db => db.Justifying, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(db => db.Justifying, "", new { @class = "text-danger" })
+        <br />
+        <p> @Html.Label("Certification Levels:")</p>
+        @Html.DropDownList("CertificationLevels", new List<SelectListItem>
+        {
+    new SelectListItem {Text ="Level 0",Value="1"},
+    new SelectListItem {Text ="Level 1",Value="2"},
+    new SelectListItem {Text ="Level 2",Value="3"},
+    new SelectListItem {Text ="Level 3",Value="4"},
+        }, "Select the Level")
+
+        @Html.ValidationMessageFor(db => db.CertificationLevels, "", new { @class = "text-danger" })
+        <br />
+        <br />
+
+        <p> @Html.Label("Do you have any ministry of background:")</p>
+        @Html.DropDownListFor(db => db.MinistryofBackground, new List<SelectListItem>
+        {
+    new SelectListItem {Text ="Yes",Value="1"},
+    }, "No")
+        @Html.ValidationMessageFor(db => db.MinistryofBackground, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        <p> @Html.Label("Additional skills:")</p>
+        @Html.TextBoxFor(db => db.AdditionalSkills, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(db => db.AdditionalSkills, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        <center>
+            <p> <a href="~/Profile/Availability"> <div class="button"><center>Next</center>  </div> </a></p>
+        </center>
+
 
         <style>
             * {
@@ -140,5 +143,7 @@ new SelectListItem {Text ="Level 3",Value="4"},
                 text-align: center;
             }
         </style>
+    }
 </body>
 </html>
+

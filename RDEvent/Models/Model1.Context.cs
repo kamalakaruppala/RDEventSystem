@@ -27,5 +27,7 @@ namespace RDEvent.Models
     
         public virtual DbSet<Register> Registers { get; set; }
         public virtual DbSet<Addevent> Addevents { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<News> News { get; set; }
     }
 }

@@ -1,9 +1,14 @@
-﻿<html>
+﻿model RDEvent.Models.Register
+@{
+    ViewBag.Title = "Index";
+}
+
 <center>
     <h1 Style="background-color: black;color:pink;"> Profile </h1>
 </center>
+<html>
 <body>
-    <div class="container"
+    <div class="container" method="POST" action="Index"
          align="Justify">
         <h2> Enter your details </h2>
         <br />
@@ -25,10 +30,10 @@
         &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<input type="text" placeholder="Enter your city">
         &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
         <label for="Postal"><b>Postal</b></label>
-         ;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<input type="text" placeholder="Enter your Postal">
+        ;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<input type="text" placeholder="Enter your Postal">
         <br />
         <br />
-         <label for="PhoneNumber"><b>PhoneNumber*</b></label>
+        <label for="PhoneNumber"><b>PhoneNumber*</b></label>
         &nbsp;<input type="text" placeholder="Enter your PhoneNumber" name="PhoneNumber" required>
 
         <br />
@@ -38,9 +43,9 @@
         </p><br />
         <p>
             <strong>If You are a Skating Official!</strong>Go Next <center>
-  
-            <a Style="color:White;"> <a href="/Profile/Experience"><div class="button"> Next  </div> </a> <br /></a>
-        </center>
+
+                <a Style="color:White;" href="/Profile/Experience"><div class="button"> Next  </div> <br /></a>
+            </center>
         </p>
     </div>
     <style>

@@ -12,15 +12,13 @@ namespace RDEvent.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Addevent
+    public partial class User
     {
-        public string EventName { get; set; }
-        public string Region { get; set; }
-        public string Description { get; set; }
-        public string Date { get; set; }
-        public string City { get; set; }
-        public string TypeofEvent { get; set; }
-        public string NumberOfOfficialsNeeded { get; set; }
-        public int EventID { get; set; }
+        public int UserID { get; set; }
+        public string EmailID { get; set; }
+        public string Password { get; set; }
+        public bool IsEmailVerified { get; set; }
+        public System.Guid ActivationCode { get; set; }
+        public string ResetCode { get; set; }
     }
 }

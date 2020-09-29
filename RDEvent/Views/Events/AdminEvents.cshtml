@@ -4,30 +4,51 @@
 }
 
 
-<center>
-    <h1 Style="background-color: black;color:pink;"> Add Events </h1>
-</center>
 <html>
-<body>
-   
+    <body>
 
-    <p>
-        Emralds Women vs Rubbies Women . Wellington . Region3
-    </p>
+        <style>
 
-    <a href="/Events/EditEvent/" class="site-btn"> Edit Event</a>
-    <p>
-        Emralds Men vs Rubbies Men . Auckland . Region1
-    </p>
-    <a href="/Events/EditEvent/" class="site-btn"> Edit Event</a>
-    <section>
-        <div class="col-lg-16 col-md-16">
-            
-           <center>     <a href="/Events/AddEvents" class="primary1-btn">Add Events</a>
-            </center>
-        </div>
-    </section>
-  
-</body>
+            table,
+            th,
+            td {
+                padding: 10px;
+                border: 2px solid Black;
+                border-collapse: collapse;
+            }
+        </style>
+        <header>
+            <h1 Style="background-color: black;color:pink;"> Event Details </h1>
+        </header>
+        <table>
+            <tr>
+                <th><h3 Style="background-color: white;color:darkgrey;">  Event ID</h3></th>
+                <th><h3 Style="background-color: white;color:darkgrey;">  Event Name</h3></th>
+                <th> <h3 Style="background-color: white;color:darkgrey;"> Region</h3></th>
+                <th> <h3 Style="background-color: white;color:darkgrey;"> Description</h3></th>
+                <th> <h3 Style="background-color: white;color:darkgrey;"> Date </h3></th>
+                <th> <h3 Style="background-color: white;color:darkgrey;"> City</h3></th>
+                <th> <h3 Style="background-color: white;color:darkgrey;"> Type of Event</h3></th>
+                <th> <h3 Style="background-color: white;color:darkgrey;"> Number Of Officials Needed</h3></th>
+
+            </tr>
+            @foreach (var i in Model)
+            {
+        <tr>
+            <td> @i.EventID</td>
+            <td> @i.EventName </td>
+            <td> @i.Region</td>
+            <td> @i.Description </td>
+            <td> @i.Date </td>
+            <td> @i.City</td>
+            <td> @i.TypeofEvent </td>
+            <td> @i.NumberOfOfficialsNeeded</td>
+            <td><a href="/Events/EditEvent"><div class="button"> Edit  </div> </a></td>
+        </tr>
+            }
+        </table>
+
+    </body>
 </html>
+
 

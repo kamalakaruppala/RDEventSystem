@@ -13,6 +13,7 @@ namespace RDEvent.Controllers
         {
             return View();
         }
+    [Authorize]
         public ActionResult Users()
         {
             return View();

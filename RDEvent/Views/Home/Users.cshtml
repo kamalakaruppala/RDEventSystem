@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-
+Welcome @HttpContext.Current.User.Identity.Name
 
 
    
@@ -19,8 +19,13 @@
                
                 <a href="~/Profile/Index" class="site-btn"><i></i>Update Profile</a>
                 &nbsp;&nbsp;
-                <a href="~/Home/Index"  class="site-btn"><i></i>Logout</a>
-
+                @if (Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("Logout", "Login", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                <a class="site-btn" href="javascript:document.getElementById('logoutForm').submit() "> Logout</a>
+                    }
+                }
             </div>
         </div>
     </div>

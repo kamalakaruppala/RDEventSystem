@@ -1,0 +1,59 @@
+﻿@model RDEvent.Models.User
+@{
+    ViewBag.Title = "VerifyAccount";
+}
+
+
+<center>
+    <h1 Style="background-color: black;color:pink;"> Verification </h1>
+</center>
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    <div class="alert alert-success">
+        <center>
+            <br />
+            <br />
+            <h2> Your Email verification is success..!</h2>
+            <br />
+            <br />
+            <br />
+        </center>
+    </div>
+    <p Style="color:White;"> <a href="~/Login/Login">  <div class="button"> Go to the Login Page </div> </a> <br /></p>
+
+}
+else
+{
+    <div class="alert alert-danger">
+        <strong>Error!</strong>@ViewBag.Message
+    </div>
+}
+<style>
+    /* Set a style for the submit/register button */
+    .button {
+        background-color: #000000;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        opacity: 0.9;
+    }
+
+        .button:hover {
+            opacity: 1;
+        }
+
+    /* Add a blue text color to links */
+    .a {
+        color: white;
+    }
+
+    /* Set a grey background color and center the text of the "sign in" section */
+    .signin {
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+</style>
+
