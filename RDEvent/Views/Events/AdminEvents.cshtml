@@ -5,50 +5,82 @@
 
 
 <html>
-    <body>
+<body>
 
-        <style>
+    <style>
+        a {
+            color: dodgerblue;
+        }
 
-            table,
-            th,
-            td {
-                padding: 10px;
-                border: 2px solid Black;
-                border-collapse: collapse;
-            }
-        </style>
-        <header>
-            <h1 Style="background-color: black;color:pink;"> Event Details </h1>
-        </header>
-        <table>
+        table,
+        th,
+        td {
+            padding: 10px;
+            border: 2px solid Black;
+            border-collapse: collapse;
+        }
+    </style>
+    <header>
+        <center> <h1 Style="background-color: black;color:pink;"> Event Details </h1></center>
+    </header>
+    <br />
+    <button onclick="location.href='@Url.Action("Admin", "Home")';return false;" class="button">Back</button>
+    <br />
+
+    <table>
+        <tr>
+
+            <th><h3 Style="background-color: white;color:darkgrey;">  Event Name</h3></th>
+            <th> <h3 Style="background-color: white;color:darkgrey;"> Region</h3></th>
+            <th> <h3 Style="background-color: white;color:darkgrey;"> Description</h3></th>
+            <th> <h3 Style="background-color: white;color:darkgrey;"> Date </h3></th>
+            <th> <h3 Style="background-color: white;color:darkgrey;"> City</h3></th>
+            <th> <h3 Style="background-color: white;color:darkgrey;"> Event Category</h3></th>
+            <th> <h3 Style="background-color: white;color:darkgrey;">  Special Notes</h3></th>
+            <th> <h3 Style="background-color: white;color:darkgrey;">  Edit</h3></th>
+            <th> <h3 Style="background-color: white;color:darkgrey;">  Users Registered</h3></th>
+
+        </tr>
+        @foreach (var i in Model)
+        {
             <tr>
-                <th><h3 Style="background-color: white;color:darkgrey;">  Event ID</h3></th>
-                <th><h3 Style="background-color: white;color:darkgrey;">  Event Name</h3></th>
-                <th> <h3 Style="background-color: white;color:darkgrey;"> Region</h3></th>
-                <th> <h3 Style="background-color: white;color:darkgrey;"> Description</h3></th>
-                <th> <h3 Style="background-color: white;color:darkgrey;"> Date </h3></th>
-                <th> <h3 Style="background-color: white;color:darkgrey;"> City</h3></th>
-                <th> <h3 Style="background-color: white;color:darkgrey;"> Type of Event</h3></th>
-                <th> <h3 Style="background-color: white;color:darkgrey;"> Number Of Officials Needed</h3></th>
+
+                <td> @i.EventName </td>
+                <td> @i.Region</td>
+                <td> @i.Description </td>
+                <td> @i.Date </td>
+                <td> @i.City</td>
+                <td> @i.TypeofEvent </td>
+                <td> @i.NumberOfOfficialsNeeded</td>
+
+                <td>
+                    @Html.ActionLink("Edit Event", "EditEvent", new { eventname = @i.EventName })
+                </td>
+                <td>
+                    @Html.ActionLink("Users Registered", "UsersRegistered", new { eventname = @i.EventName })
+                </td>
 
             </tr>
-            @foreach (var i in Model)
-            {
-        <tr>
-            <td> @i.EventID</td>
-            <td> @i.EventName </td>
-            <td> @i.Region</td>
-            <td> @i.Description </td>
-            <td> @i.Date </td>
-            <td> @i.City</td>
-            <td> @i.TypeofEvent </td>
-            <td> @i.NumberOfOfficialsNeeded</td>
-            <td><a href="/Events/EditEvent"><div class="button"> Edit  </div> </a></td>
-        </tr>
-            }
-        </table>
-
-    </body>
+        }
+    </table>
+    <br />
+    <center>
+        <button onclick="location.href='@Url.Action("AddEvents", "Events")';return false;" class="button">Add Events</button>
+        <br />
+    </center>
+</body>
 </html>
+<style>
+    .button {
+        background-color: black;
+        color: white;
+        padding: 16px 20px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        opacity: 0.9;
+    }
+</style>
 
 

@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Profile Details";
+}
+
+<DOCTYPE html>
+    <html>
+    <body>
+
+
+        <header>
+            <center><h1 Style="background-color: black;color:pink;"> Profile </h1></center>
+        </header>
+        <br />
+        <button onclick="location.href='@Url.Action("Users", "Home")';return false;" class="button">Back</button>
+        <br />
+
+
+        @foreach (var i in Model)
+        {
+
+            <p> Email:<center> @i.EmailID</center></p>
+            <p>First Name:<center> @i.FirstName</center></p>
+            <p> Last Name:<center> @i.LastName</center></p>
+            <p> Street:<center> @i.Street</center> </p>
+            <p> City:<center>@i.City</center></p>
+            <p>  Region:<center> @i.Region</center></p>
+            <p> Postal: <center>@i.Postal</center></p>
+            <p>Ministry of background Required:<center> @i.MinistryofBackground</center> </p>
+            <p>  Phone Number:<center> @i.PhoneNumber</center></p>
+            <p> Skating Roles:<center> @i.SkRoles</center></p>
+            <p>Experience in Skating Roles:<center> @i.SkExperience</center></p>
+            <p> Certification: <center> @i.SkCertificationLevels</center> </p>
+            <p>Additional Skills:<center> @i.SkAdditionalSkills</center></p>
+            <p>Non Skating Roles:<center> @i.NSkRoles</center> </p>
+            <p>Experience in Non Skating Roles:<center> @i.NSkExperience</center></p>
+            <p> Certification:<center> @i.NSkCertificationLevels </center></p>
+            <p>Additional Skills:<center> @i.NSkAdditionalSkills</center></p>
+
+        }
+
+        <center>
+            <br />
+            <button onclick="location.href='@Url.Action("PersonalDetails", "Home")';return false;" class="button">Edit Profile</button>
+
+            <br />
+        </center>
+    </body>
+</html>
+<style>
+    .button {
+        background-color: black;
+        color: white;
+        padding: 16px 20px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        opacity: 0.9;
+    }
+</style>

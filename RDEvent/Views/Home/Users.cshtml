@@ -3,33 +3,35 @@
     ViewBag.Title = "Index";
 }
 
-Welcome @HttpContext.Current.User.Identity.Name
 
 
-   
+
 <html>
 <body>
-    <div class="col-lg-20 col-md-20">
+    <div class="col-lg-12 col-md-12">
         <div class="header_title">
 
         </div>
         <div class="header__nav">
 
             <div class="header-link-right">
+                <br />    <br />
+
                
-                <a href="~/Profile/Index" class="site-btn"><i></i>Update Profile</a>
-                &nbsp;&nbsp;
+
                 @if (Request.IsAuthenticated)
                 {
                     using (Html.BeginForm("Logout", "Login", FormMethod.Post, new { id = "logoutForm" }))
                     {
-                <a class="site-btn" href="javascript:document.getElementById('logoutForm').submit() "> Logout</a>
+                        <a href="~/Home/ProfileDetails" class="button" &nbsp;&nbsp;><i></i> Profile</a>  <a class="button" href="javascript:document.getElementById('logoutForm').submit() "> Logout</a>
                     }
                 }
             </div>
         </div>
     </div>
-   
+
+    <center> <h2>Welcome @HttpContext.Current.User.Identity.Name</h2></center>
+
 
     <section class="Events">
         <div class="container">
@@ -37,13 +39,13 @@ Welcome @HttpContext.Current.User.Identity.Name
                 <div class="col-lg-6">
                     <div class="column-sm-2">
                         <a href="/Events/Index">
-                            <img src="~/Content/Images/Events.jpg" style="width:35%">
+                            <img src="~/Content/Images/Events.jpg" style="width:20%">
                         </a>
-                        <a href="/News/Index">
+                        <a href="/News/UserNews">
                             <img src="~/Content/Images/News.png" style="width:25%">
                         </a>
-                        <a href="https://www.google.com/maps/search/?api=1&parameters">
-                            <img src="~/Content/Images/Maps.png" style="width:25%">
+                        <a href="https://www.google.com/maps/d/edit?mid=1bIKv5YKgSRRKiPbCrC8EJOhAYvFNHny7&usp=sharing" target="_blank">
+                            <img src="~/Content/Images/Maps.png" style="width:20%">
                         </a>
                     </div>
 
@@ -53,15 +55,19 @@ Welcome @HttpContext.Current.User.Identity.Name
                         <div class="section-title">
                             <h2> Upcoming Events</h2>
                         </div>
-                        <img src="~/Content/maxresdefault.jpg" style="width:50%">
-                        <p>
-                            Game 1 . Wellington . Region3
-                        </p>
-                        <img src="~/Content/Images/Derby1.jpg" style="width:50%">
-                        <p>
-                            Game 1 . Auckland . Region1
-                        </p>
-                        <a href="#" class="primary-btn"> Register</a>
+                        <img src="~/Content/maxresdefault.jpg" style="width:80%">
+                        @foreach (var i in Model)
+                        {
+                            <p>
+
+                                <h3> @i.EventName </h3>
+                            </p>
+                            <p>
+                                @Html.ActionLink("More Details", "RegisteredEvents", new { eventname = @i.EventName })
+                            </p>
+                            break;
+                        }
+
                     </div>
                 </div>
             </div>
@@ -71,23 +77,23 @@ Welcome @HttpContext.Current.User.Identity.Name
             <div class="col-lg-6">
                 <div class="about__text">
                     <div class="section-title">
-                        <h3> Registered Events</h3>
+                        <h2> Registered Events</h2>
                     </div>
+                    @foreach (var i in Model)
+                    {
+                        <p>
+                            <h3> @i.EventName</h3>
+                        </p>
+                        <p>
+                            @Html.ActionLink("More Details", "RegisteredEvents", new { eventname = @i.EventName })
+                        </p>
 
-                    <p>
-                        Emralds Women vs Rubbies Women . Wellington . Region3
-                    </p>
-
-                    <a href="/Profile/Availability/" class="site-btn"> Change Availability</a>
-                    <p>
-                        Emralds Men vs Rubbies Men . Auckland . Region1
-                    </p>
-                    <a href="/Profile/Availability/" class="site-btn"> Change Availability</a>
+                    }
                 </div>
             </div>
         </div>
     </section>
-   
+
 </body>
 
 </html>
@@ -127,9 +133,9 @@ Welcome @HttpContext.Current.User.Identity.Name
         clear: both;
     }
 
-   .column-sm-2 img {
-            margin-top: 120px;
-        }
+    .column-sm-2 img {
+        margin-top: 120px;
+    }
 
     * {
         box-sizing: border-box
@@ -226,9 +232,15 @@ Welcome @HttpContext.Current.User.Identity.Name
         animation-name: fade;
         animation-duration: 1.5s;
     }
-    .header-link-right,a{
-      margin-right:0px;
-        
+    .button {
+        background-color: black;
+        color: white;
+        padding: 16px 20px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        opacity: 0.9;
     }
 </style>
 

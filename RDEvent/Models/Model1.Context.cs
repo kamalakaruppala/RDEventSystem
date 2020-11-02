@@ -13,10 +13,10 @@ namespace RDEvent.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Database1Entities : DbContext
+    public partial class Database1Entities3 : DbContext
     {
-        public Database1Entities()
-            : base("name=Database1Entities")
+        public Database1Entities3()
+            : base("name=Database1Entities3")
         {
         }
     
@@ -25,9 +25,10 @@ namespace RDEvent.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Register> Registers { get; set; }
         public virtual DbSet<Addevent> Addevents { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserEvent> UserEvents { get; set; }
     }
 }

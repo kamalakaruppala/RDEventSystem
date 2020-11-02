@@ -4,8 +4,11 @@
 }
 
 <center>
-    <h1 Style="background-color: black;color:pink;"> User Login </h1>
+    <h1 Style="background-color: black;color:pink;"> Login </h1>
 </center>
+<br />
+<button onclick="location.href='@Url.Action("Index", "Home")';return false;" class="button">Back</button>
+<br />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -13,10 +16,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @if (ViewBag.Message != "")
-        {
-            <div class="text-danger">*@ViewBag.Message</div>
-        }
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.EmailID, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -43,6 +43,10 @@
                 </div>
             </div>
         </div>
+        @if (ViewBag.Message != "")
+        {
+            <div class="text-danger">@ViewBag.Message</div>
+        }
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -63,12 +67,10 @@
 
 <p> <a href="/Login/ForgotPassword/"> <div><center>Forgot Password?</center>  </div> </a></p>
 <br />
-<center>
-    <p> Continue with <a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"> Google</a> <br /></p>
-</center>
+
 <p>
     <center>
-        <strong>If you are a New User!</strong><a href="/Register/Index/">Click Here</a>.
+        <strong>If you are a new user!</strong><a href="/Register/Registration/">Click Here</a>.
     </center>
 </p>
 <br />
@@ -84,12 +86,12 @@
     }
 
     /* Full-width input fields */
-    input[type=text], input[type=password] {
+    input[type=text], input[type=password], form-control {
         width: 30%;
         padding: 15px;
         margin: 5px 0 22px 0;
         display: inline-block;
-        border: none;
+        border: groove;
         background: #f1f1f1;
         align-content: center;
     }

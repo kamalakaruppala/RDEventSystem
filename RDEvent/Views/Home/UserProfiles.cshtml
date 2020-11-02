@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "UserProfiles";
+}
+
+<DOCTYPE html>
+    <html>
+    <body>
+
+        <style>
+
+            table,
+            th,
+            td {
+                padding: 10px;
+                border: 2px solid Black;
+                border-collapse: collapse;
+            }
+        </style>
+        <header>
+            <center><h1 Style="background-color: black;color:pink;"> User Details </h1></center>
+        </header>
+        <br />
+        <button onclick="location.href='@Url.Action("Admin", "Home")';return false;" class="button">Back</button>
+        <br />
+        <center>
+            <table>
+                <tr>
+                    <th> <h3 Style="background-color: white;color:darkgrey;"> Email</h3></th>
+
+                    <th> <h3 Style="background-color: white;color:darkgrey;"> Details</h3></th>
+                    <th> <h3 Style="background-color: white;color:darkgrey;"> Add User</h3></th>
+
+                </tr>
+                @foreach (var i in Model)
+                {
+            <tr>
+                <td> @i.EmailID</td>
+                <td>
+                    @Html.ActionLink("More Details", "DetailedProfiles", new { email = @i.EmailID })
+                </td>
+                <td>
+                    @Html.ActionLink("Add User to Event", "AddUsers", new { Email = @i.EmailID })
+                </td>
+            </tr>
+                }
+            </table>
+
+
+        </center>
+    </body>
+</html>
+<style>
+    .button {
+        background-color: black;
+        color: white;
+        padding: 16px 20px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        opacity: 0.9;
+    }
+</style>

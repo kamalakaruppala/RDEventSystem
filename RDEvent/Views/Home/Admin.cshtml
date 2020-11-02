@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
@@ -18,12 +17,21 @@
         <div class="header__nav">
 
             <div class="header-link-right">
+                <br />    <br />
 
-
-                &nbsp;&nbsp;
-                <a href="~/Home/Index" class="site-btn"><i></i>Logout</a>
-
+               
+                @if (Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("Logout", "Login", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        <a href="~/Home/UserProfiles" class="button" &nbsp;><i></i> User Profiles</a> <a class="button" href="javascript:document.getElementById('logoutForm').submit() "> Logout</a>
+                    }
+                }
             </div>
+
+
+           
+       
         </div>
     </div>
 
@@ -40,12 +48,12 @@
                 <div class="col-lg-6">
                     <div class="column-sm-2">
                         <a href="/Events/AdminEvents">
-                            <img src="~/Content/Images/Events.jpg" style="width:35%">
+                            <img src="~/Content/Images/Events.jpg" style="width:20%">
                         </a>
                         <a href="/News/AdminNews">
                             <img src="~/Content/Images/News.png" style="width:25%">
                         </a>
-                        <a href="https://www.google.com/maps/search/?api=1&parameters">
+                        <a href="https://www.google.com/maps/d/edit?mid=1bIKv5YKgSRRKiPbCrC8EJOhAYvFNHny7&usp=sharings" target="_blank">
                             <img src="~/Content/Images/Maps.png" style="width:20%">
                         </a>
                     </div>
@@ -56,15 +64,15 @@
                         <div class="section-title">
                             <h2>Upcoming Events</h2>
                         </div>
-                        <img src="~/Content/maxresdefault.jpg" style="width:50%">
-                        <p>
-                            Game 1  . Welligton   . Region3
-                        </p>
-                        <img src="~/Content/Images/Derby1.jpg" style="width:50%">
-                        <p>
-                            Game 1  . Auckland   . Region1
-                        </p>
-                       
+                        <img src="~/Content/maxresdefault.jpg" style="width:80%">
+                        @foreach (var i in Model)
+                        {
+                            <p>
+
+                                <h3> @i.EventName . @i.Region. @i.Date</h3>
+                            </p>
+                            break;
+                        }
                     </div>
                 </div>
             </div>
@@ -73,18 +81,16 @@
             <div class="col-lg-6">
                 <div class="about__text">
                     <div class="section-title">
-                        <h3> Added Events</h3>
+                        <h2> Added Events</h2>
                     </div>
+                    @foreach (var i in Model)
+                    {
+                        <p>
+                            <h3> @i.EventName </h3>
+                            </p>
+                        <p><h5> @i.Region . @i.Date . @i.City</h5></p>
 
-                    <p>
-                        Emralds Women vs Rubbies Women . Wellington . Region3
-                    </p>
-
-                    <a href="/Events/EditEvent/" class="site-btn"> Edit Event</a>
-                    <p>
-                        Emralds Men vs Rubbies Men . Auckland . Region1
-                    </p>
-                    <a href="/Events/EditEvent/" class="site-btn"> Edit Event</a>
+                    }
                 </div>
             </div>
         </div>
@@ -222,6 +228,16 @@
         -webkit-animation-duration: 1.5s;
         animation-name: fade;
         animation-duration: 1.5s;
+    }
+    .button {
+        background-color: black;
+        color: white;
+        padding: 16px 20px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        opacity: 0.9;
     }
 </style>
 

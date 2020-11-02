@@ -8,7 +8,7 @@ namespace RDEvent.Models
 {
     public class UserLogin
     {
-        [Display(Name ="Email Id:")]
+        [Display(Name ="Email:")]
         [Required(AllowEmptyStrings =false,ErrorMessage ="Email Id Required")]
         public string EmailID { get; set; }
         [Display(Name = "Password:")]

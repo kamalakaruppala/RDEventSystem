@@ -1,0 +1,147 @@
+﻿@model RDEvent.Models.User
+@{
+    ViewBag.Title = "PersonalDetails";
+}
+
+<script src="~/Models/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<html>
+<body>
+    <center>
+        <h1 Style="background-color: black;color:pink;"> Personal Details </h1>
+    </center>
+    <br />
+    <button onclick="location.href='@Url.Action("ProfileDetails", "Home")';return false;" class="button">Back</button>
+    <br />
+    @using (Html.BeginForm("PersonalDetails", "Home", FormMethod.Post, new { email = @HttpContext.Current.User.Identity.Name }))
+    {
+
+        <p> @Html.Label("First Name:")</p>
+        @Html.TextBoxFor(dc => dc.FirstName, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(dc => dc.FirstName, "", new { @class = "text-danger" })
+
+        <p> @Html.Label("Last Name:")</p>
+        @Html.TextBoxFor(dc => dc.LastName, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(dc => dc.LastName, "", new { @class = "text-danger" })
+
+        <p> @Html.Label("Street:")</p>
+        @Html.TextBoxFor(dc => dc.Street, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(dc => dc.Street, "", new { @class = "text-danger" })
+
+        <p> @Html.Label("City:")</p>
+        @Html.TextBoxFor(dc => dc.City, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(dc => dc.City, "", new { @class = "text-danger" })
+
+        <p> @Html.Label("Region", "Region:")</p>
+        @Html.DropDownListFor(dc => dc.Region, new List<SelectListItem>
+       {
+    new SelectListItem {Text ="BOP",Value="1-BOP"},
+    new SelectListItem {Text ="Central 1",Value="2-Central-1"},
+    new SelectListItem {Text ="Central 2",Value="3-Central 2"},
+    new SelectListItem {Text ="Northern",Value="4-Northern"},
+    new SelectListItem {Text ="Southern 1",Value="5-Southern-1"},
+    new SelectListItem {Text ="Southern 2",Value="6-Southern 2"},
+    new SelectListItem {Text ="Wellington",Value="7-Wellington"},
+
+       }, "Select the Region")
+
+
+        @Html.ValidationMessageFor(dc => dc.Region, "", new { @class = "text-danger" })
+
+
+        <p> @Html.Label("Postal:")</p>
+        @Html.TextBoxFor(dc => dc.Postal, null, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(dc => dc.Postal, "", new { @class = "text-danger" })
+
+        <p> @Html.Label("Ministry of Justice background check?")</p>
+        @Html.DropDownListFor(dc => dc.MinistryofBackground, new List<SelectListItem>
+            {
+            new SelectListItem {Text ="Yes",Value="1"},
+            new SelectListItem {Text ="NO",Value="2"},    }, "Yes or No")
+
+        @Html.ValidationMessageFor(dc => dc.MinistryofBackground, "", new { @class = "text-danger" })
+
+
+        <p> @Html.Label("Phone Number:")</p>
+        @Html.TextBoxFor(dc => dc.PhoneNumber, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(dc => dc.PhoneNumber, "", new { @class = "text-danger" })
+
+
+
+
+
+        <p>The Next Page will be choosing Skating official roles</p>
+
+
+
+        <center><input type="Submit" value="Next" class="button" /></center>
+
+
+
+
+
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Add padding to containers */
+            .container {
+                padding: 16px;
+            }
+
+            /* Full-width input fields */
+            input[type=text], input[type=password], form-contal {
+                width: 30%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: groove;
+                background: #f1f1f1;
+            }
+
+                input[type=text]:focus, input[type=password]:focus {
+                    background-color: #ddd;
+                    outline: none;
+                }
+
+            /* Overwrite default styles of hr */
+            hr {
+                border: 1px solid #f1f1f1;
+                margin-bottom: 25px;
+            }
+
+            /* Set a style for the submit/register button */
+            .button {
+                background-color: #000000;
+                color: white;
+                padding: 16px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+            }
+
+                .button:hover {
+                    opacity: 1;
+                }
+
+            /* Add a blue text color to links */
+            a {
+                color: dodgerblue;
+            }
+
+            /* Set a grey background color and center the text of the "sign in" section */
+            .signin {
+                background-color: #f1f1f1;
+                text-align: center;
+            }
+        </style>
+    }
+</body>
+</html>
+

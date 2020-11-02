@@ -1,47 +1,42 @@
-﻿
+﻿@model RDEvent.Models.News
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "AddNews";
 }
+
 <html>
-<center>
-    <h1 Style="background-color: black;color:pink;"> Admin Login </h1>
-</center>
 <body>
-
-
-    <br />
-    <br />
-
     <center>
-        <div class="container">
-            <label for="uname"><b>Username</b></label>&nbsp;
-            <input type="text" placeholder="Enter Username" name="uname" required>
-            <br />
-            <br />
-            <label for="psw"><b>Password</b></label>&nbsp;
-            <input type="password" placeholder="Enter Password" name="psw" required>
-            <br />
-            <br />
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
+        <h1 Style="background-color: black;color:pink;"> News Feed </h1>
     </center>
     <br />
-    </div>
-
-    <center>
-        <p> <a href="~/Home/Admin"> <div class="loginbtn"><center>Login</center>  </div> </a></p>
-    </center>
-   
+    <button onclick="location.href='@Url.Action("AdminNews", "News")';return false;" class="button">Back</button>
+    <br />
 
     <br />
-    <center>
-        <p> Continue with <a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"> Google</a> <br /></p>
-    </center>
+    @using (Html.BeginForm("AddNews", "News", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <p> @Html.Label("News Title", "News Title")</p>
+        @Html.TextAreaFor(k => k.NewsTitle, new { rows = 5, Cols = 50 })
+        @Html.ValidationMessageFor(k => k.NewsTitle, "", new { @class = "text-danger" })
+        <br />
+
+
+        <p> @Html.Label("News Content", "News Content:")</p>
+        @Html.TextAreaFor(k => k.NewsContent, new { rows = 7, Cols = 50 })
+        @Html.ValidationMessageFor(k => k.NewsContent, "", new { @class = "text-danger" })
+
+        <br />
+        <center><input type="Submit" value="Submit" class="button" /></center>
+
+    }
 
     <style>
         * {
-            box-sizing: border-box
+            box-sizing: border-box;
         }
 
         /* Add padding to containers */
@@ -71,7 +66,7 @@
         }
 
         /* Set a style for the submit/register button */
-        .loginbtn {
+        .button {
             background-color: #000000;
             color: white;
             padding: 16px 20px;
@@ -82,7 +77,7 @@
             opacity: 0.9;
         }
 
-            .loginbtn:hover {
+            .button:hover {
                 opacity: 1;
             }
 
@@ -97,11 +92,7 @@
             text-align: center;
         }
     </style>
+    
 </body>
 </html>
-
-
-
-
-
 

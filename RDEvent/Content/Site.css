@@ -16,7 +16,9 @@ h6 {
     font-family: "Rajdhani", sans-serif;
 }
 
-
+h1 {
+    font-size: 24px;
+}
 
 h2 {
     font-size: 36px;
@@ -58,12 +60,16 @@ textarea:focus {
     outline: none;
 }
 
-a:hover,
-a:focus {
-    text-decoration: none;
-    outline: none;
-    color: #fff;
+a {
+    color: black;
 }
+
+    a:hover,
+    a:focus {
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+    }
 
 ul,
 ol {
@@ -144,11 +150,11 @@ ol {
         border: 2px solid #5c00ce;
         color: #111111;
     }
+
 .primary1-btn {
     display: inline-block;
     font-size: 15px;
-    
-   margin-right:0px;
+    margin-right: 0px;
     color: #ffffff;
     background: #000000;
     letter-spacing: 2px;
@@ -294,13 +300,12 @@ ol {
     .header.header--normal {
         position: relative;
         background: #290849;
-        left:20px;
+        left: 20px;
     }
 
 .header__logo {
     padding: 0px 0 0px;
-    left:0px;
-    
+    left: 0px;
 }
 
     .header__logo a {
@@ -836,7 +841,7 @@ dcrumb-option {
         margin-bottom: 40px;
     }
 
-   
+
 
     .skills__content {
         height: auto;
@@ -941,8 +946,6 @@ dcrumb-option {
     .countdown {
         padding-bottom: 940px;
     }
-
-   
 }
 
 /* Small Device = 320px */
@@ -1068,8 +1071,7 @@ dcrumb-option {
 
     .social-footer-middle a:focus, a:hover {
         border-color: white;
-        color:white;
-        
+        color: white;
     }
 
 .background-image body {

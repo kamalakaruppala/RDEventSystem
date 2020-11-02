@@ -4,12 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="db39aa73d98444588068b0d3f0430854" Name="Diagram1" ZoomLevel="89">
-        <EntityTypeShape EntityType="Database1Model.Register" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.Addevent" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.User" Width="1.5" PointX="3.375" PointY="4.75" />
-        <EntityTypeShape EntityType="Database1Model.News" Width="1.5" PointX="5.375" PointY="0.75" />
-      </Diagram>
+      <Diagram DiagramId="82ac3ac9ad9d473fb3052b3c19d5c482" Name="Diagram1">
+        <EntityTypeShape EntityType="Database1Model.Addevent" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Admin" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.News" Width="1.5" PointX="5.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.User" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.UserEvent" Width="1.5" PointX="6" PointY="7.875" />
+        <AssociationConnector Association="Database1Model.FK_UserEvent_ToTable1" />
+        <AssociationConnector Association="Database1Model.FK_UserEvent_ToTable" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

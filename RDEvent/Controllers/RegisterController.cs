@@ -11,6 +11,7 @@ using AngleSharp.Io;
 
 namespace RDEvent.Controllers
 {
+   
     public class RegisterController : Controller
     {
         //Registration Action
@@ -42,14 +43,14 @@ namespace RDEvent.Controllers
                 user.Password = Crypto.Hash(user.Password);
                 user.ConfirmPassword = Crypto.Hash(user.ConfirmPassword);
                 user.IsEmailVerified = false;
-                using(Database1Entities dc= new Database1Entities())
+                using(Database1Entities3 dc= new Database1Entities3())
                 {
                     dc.Users.Add(user);
                     dc.SaveChanges();
                     //Send Email to user
                     SendVerificationLinkEmail(user.EmailID, user.ActivationCode.ToString());
-                    message = "Registration Successfully Done.Account Activation Link" +
-                        "has been sent to your Email id";
+                    message = "Registration Successful. Account activation link" +
+                        " has been sent to your Email";
                     Status = true;
                 }
 
@@ -72,7 +73,7 @@ namespace RDEvent.Controllers
         public ActionResult VerifyAccount(string id)
         {
             bool Status = false;
-            using (Database1Entities dc = new Database1Entities())
+            using (Database1Entities3 dc = new Database1Entities3())
             {
                 dc.Configuration.ValidateOnSaveEnabled = false;
                 var v = dc.Users.Where(a => a.ActivationCode == new Guid(id)).FirstOrDefault();
@@ -94,7 +95,7 @@ namespace RDEvent.Controllers
         [NonAction]
         public bool IsEmailExist(string emailID)
         {
-            using (Database1Entities dc = new Database1Entities())
+            using (Database1Entities3 dc = new Database1Entities3())
             {
                 var v = dc.Users.Where(a => a.EmailID == emailID).FirstOrDefault();
                 return v != null;
@@ -110,8 +111,8 @@ namespace RDEvent.Controllers
             var toEmail = new MailAddress(emailID);
             var fromEmailPassword = "9677282349";
             String subject = "Your Account is Successfully Created";
-            string body = "<br/><br/>We are excited to tell you that your account as volunteer for RDANZI" +
-                "is successfully created.Please click on below link to verify your account" +
+            string body = "<br/><br/>We are excited to tell you that your user account for RDANZI" + 
+                " has been successfully created.Please click on link below to verify your account" +
                 "<br/><br/><a href=" + link + " '> " + link + "</a>";
             var smtp = new SmtpClient
             {

@@ -8,7 +8,23 @@
     <center>
         <h1 Style="background-color: black;color:pink;"> Add Events </h1>
         <br />
+
     </center>
+    <br />
+    <button onclick="location.href='@Url.Action("AdminEvents", "Events")';return false;" class="button">Back</button>
+    <br />
+    @if (ViewBag.Message != null)
+    {
+        <center>
+            <div class="alert alert-success">
+
+                <strong>Success!</strong><br />@ViewBag.Message
+
+
+            </div>
+        </center>
+    }
+   
     @using (Html.BeginForm("AddEvents", "Events", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
@@ -17,6 +33,7 @@
         <p> @Html.Label("Event Name", "Event Name:")</p>
         @Html.TextBoxFor(s => s.EventName, null, new { @class = "form-contal" })
         @Html.ValidationMessageFor(s => s.EventName, "", new { @class = "text-danger" })
+        @Html.ValidationMessage("EventNameExist", new { @class = "text-danger" })
         <br />
         <br />
 
@@ -24,13 +41,13 @@
         <p> @Html.Label("Region", "Region:")</p>
         @Html.DropDownListFor(s => s.Region, new List<SelectListItem>
        {
-    new SelectListItem {Text ="BOP",Value="1"},
-    new SelectListItem {Text ="Central 1",Value="2"},
-    new SelectListItem {Text ="Central 2",Value="3"},
-    new SelectListItem {Text ="Northern",Value="4"},
-    new SelectListItem {Text ="Southern 1",Value="5"},
-    new SelectListItem {Text ="Southern 2",Value="6"},
-    new SelectListItem {Text ="Wellington",Value="7"},
+    new SelectListItem {Text ="BOP",Value="1-BOP"},
+    new SelectListItem {Text ="Central 1",Value="2-Central-1"},
+    new SelectListItem {Text ="Central 2",Value="3-Central 2"},
+    new SelectListItem {Text ="Northern",Value="4-Northern"},
+    new SelectListItem {Text ="Southern 1",Value="5-Southern-1"},
+    new SelectListItem {Text ="Southern 2",Value="6-Southern 2"},
+    new SelectListItem {Text ="Wellington",Value="7-Wellington"},
 
        }, "Select the Region")
 
@@ -40,13 +57,13 @@
         <br />
 
         <p> @Html.Label("Description", "Description:")</p>
-        @Html.TextBoxFor(s => s.Description, null, new { @class = "form-contal" })
+        @Html.TextAreaFor(s => s.Description, new { rows = 5, Cols = 50 })
         @Html.ValidationMessageFor(s => s.Description, "", new { @class = "text-danger" })
         <br />
         <br />
 
         <p> @Html.Label("Date", "Date:")</p>
-        @Html.TextBoxFor(s => s.Date, new { @type = "date" })
+        @Html.TextBoxFor(s => s.Date, new { @type = "date", @AllowTextInput = "False" })
         @Html.ValidationMessageFor(s => s.Date, "", new { @class = "text-danger" })
         <br />
         <br />
@@ -80,80 +97,100 @@
         @Html.ValidationMessageFor(s => s.City, "", new { @class = "text-danger" })
         <br />
         <br />
-        <p> @Html.Label("Type of Event", "Type of Event:")</p>
-        @Html.TextBoxFor(s => s.TypeofEvent, null, new { @class = "form-contal" })
+        <p> @Html.Label("Event Category", "Event Category:")</p>
+        @Html.DropDownListFor(s => s.TypeofEvent, new List<SelectListItem>
+            {
+            new SelectListItem {Text ="Mens",Value="Mens"},
+            new SelectListItem {Text ="Womens",Value="Womens"},
+            new SelectListItem {Text ="Juniors",Value="Juniors"},
+            new SelectListItem {Text ="Co-ed",Value="Co-ed"},
+            new SelectListItem {Text ="Others",Value="Others"},
+      }, "Select the Category")
+
         @Html.ValidationMessageFor(s => s.TypeofEvent, "", new { @class = "text-danger" })
         <br />
         <br />
-        <p> @Html.Label("Number of officials needed", "Number of officials needed")</p>
-        @Html.TextBoxFor(s => s.NumberOfOfficialsNeeded, null, new { @class = "form-contal" })
+        <p> @Html.Label("Special Notes", "Special Notes:")</p>
+        @Html.TextAreaFor(s => s.NumberOfOfficialsNeeded, new { rows = 5, Cols = 50 })
         @Html.ValidationMessageFor(s => s.NumberOfOfficialsNeeded, "", new { @class = "text-danger" })
         <br />
         <br />
 
 
-        <center><input type="Submit" value="AddEvent" class="btn btn-default" /></center>
+        <center><input type="Submit" value="Add Event" class="button" /></center>
 
-    }
+        if (ViewBag.Message != null)
+        {
+            <center>
+                <div class="buttonlink">
 
-    <style>
-        * {
-            box-sizing: border-box;
+
+                    <button onclick="location.href='@Url.Action("AdminEvents", "Events")';return false;" class="button">Go to Events page</button>
+
+
+                </div>
+            </center>
         }
 
-        /* Add padding to containers */
-        .container {
-            padding: 16px;
-        }
 
-        /* Full-width input fields */
-        .form-contal, text-danger {
-            width: 40%;
-            padding: 15px;
-            margin: 5px 0 22px 0;
-            display: inline-block;
-            border: none;
-            background: #f1f1f1;
-        }
-
-        input[type=text]:focus, input[type=password]:focus {
-            background-color: #ddd;
-            outline: none;
-        }
-
-        /* Overwrite default styles of hr */
-        hr {
-            border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
-        }
-
-        /* Set a style for the submit/register button */
-        .button {
-            background-color: #4CAF50;
-            color: black;
-            padding: 16px 20px;
-            margin: 20px 0;
-            border: none;
-            cursor: pointer;
-            width: 20%;
-            opacity: 0.9;
-        }
-
-            .button:hover {
-                opacity: 1;
+        <style>
+            * {
+                box-sizing: border-box;
             }
 
-        /* Add a blue text color to links */
-        a {
-            color: black;
-        }
+            /* Add padding to containers */
+            .container {
+                padding: 16px;
+            }
 
-        /* Set a grey background color and center the text of the "sign in" section */
-        .signin {
-            background-color: #f1f1f1;
-            text-align: center;
-        }
-    </style>
+            /* Full-width input fields */
+            .form-contal, text-danger {
+                width: 40%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: groove;
+                background: #f1f1f1;
+            }
+
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+            /* Overwrite default styles of hr */
+            hr {
+                border: 1px solid #f1f1f1;
+                margin-bottom: 25px;
+            }
+
+            /* Set a style for the submit/register button */
+            .button {
+                background-color: black;
+                color: white;
+                padding: 16px 20px;
+                margin: 20px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+            }
+
+                .button:hover {
+                    opacity: 1;
+                }
+
+            /* Add a blue text color to links */
+            a {
+                color: dodgerblue;
+            }
+
+            /* Set a grey background color and center the text of the "sign in" section */
+            .signin {
+                background-color: #f1f1f1;
+                text-align: center;
+            }
+        </style>
 
     }
 </body>

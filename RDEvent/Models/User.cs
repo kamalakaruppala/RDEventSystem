@@ -14,11 +14,36 @@ namespace RDEvent.Models
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.UserEvents = new HashSet<UserEvent>();
+        }
+    
         public int UserID { get; set; }
         public string EmailID { get; set; }
         public string Password { get; set; }
         public bool IsEmailVerified { get; set; }
         public System.Guid ActivationCode { get; set; }
         public string ResetCode { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
+        public string Postal { get; set; }
+        public string MinistryofBackground { get; set; }
+        public string PhoneNumber { get; set; }
+        public string SkRoles { get; set; }
+        public string SkExperience { get; set; }
+        public string SkCertificationLevels { get; set; }
+        public string SkAdditionalSkills { get; set; }
+        public string NSkRoles { get; set; }
+        public string NSkExperience { get; set; }
+        public string NSkCertificationLevels { get; set; }
+        public string NSkAdditionalSkills { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserEvent> UserEvents { get; set; }
     }
 }

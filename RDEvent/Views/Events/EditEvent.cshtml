@@ -6,41 +6,38 @@
 <html>
 <body>
     <center>
-        <h1 Style="background-color: black;color:pink;"> Add Events </h1>
+        <h1 Style="background-color: black;color:pink;"> Edit Events </h1>
         <br />
     </center>
+    <br />
+    <button onclick="location.href='@Url.Action("AdminEvents", "Events")';return false;" class="button">Back</button>
+    <br />
+    @if (ViewBag.Message != null)
+    {
+        <center>
+            <div class="alert alert-success">
+
+                <strong>Success!</strong><br />@ViewBag.Message
+
+
+            </div>
+        </center>
+    }
+
     @using (Html.BeginForm("EditEvent", "Events", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
-        <p> @Html.Label("Event ID", "Event ID:")</p>
-        @Html.TextBoxFor(s => s.EventID, null, new { @class = "form-contal" })
-        @Html.ValidationMessageFor(s => s.EventID, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.HiddenFor(a => a.EventID)
+        </div>
         <br />
         <br />
-
         <p> @Html.Label("Event Name", "Event Name:")</p>
-        @Html.TextBoxFor(s => s.EventName, null, new { @class = "form-contal" })
+        @Html.TextBoxFor(s => s.EventName, null, new { @class = "form-contal", @value = "eventname", @readonly = "readonly" })
+
+
         @Html.ValidationMessageFor(s => s.EventName, "", new { @class = "text-danger" })
-        <br />
-        <br />
-
-
-        <p> @Html.Label("Region", "Region:")</p>
-        @Html.DropDownListFor(s => s.Region, new List<SelectListItem>
-       {
-    new SelectListItem {Text ="BOP",Value="1"},
-    new SelectListItem {Text ="Central 1",Value="2"},
-    new SelectListItem {Text ="Central 2",Value="3"},
-    new SelectListItem {Text ="Northern",Value="4"},
-    new SelectListItem {Text ="Southern 1",Value="5"},
-    new SelectListItem {Text ="Southern 2",Value="6"},
-    new SelectListItem {Text ="Wellington",Value="7"},
-
-       }, "Select the Region")
-
-
-        @Html.ValidationMessageFor(s => s.Region, "", new { @class = "text-danger" })
         <br />
         <br />
 
@@ -51,8 +48,25 @@
         <br />
 
         <p> @Html.Label("Date", "Date:")</p>
-        @Html.TextBoxFor(s => s.Date, new { @type = "date" })
+        @Html.TextBoxFor(s => s.Date, new { @type = "date", @AllowTextInput = "False" })
         @Html.ValidationMessageFor(s => s.Date, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        <p> @Html.Label("Region", "Region:")</p>
+        @Html.DropDownListFor(s => s.Region, new List<SelectListItem>
+       {
+  new SelectListItem {Text ="BOP",Value="1-BOP"},
+    new SelectListItem {Text ="Central 1",Value="2-Central-1"},
+    new SelectListItem {Text ="Central 2",Value="3-Central 2"},
+    new SelectListItem {Text ="Northern",Value="4-Northern"},
+    new SelectListItem {Text ="Southern 1",Value="5-Southern-1"},
+    new SelectListItem {Text ="Southern 2",Value="6-Southern 2"},
+    new SelectListItem {Text ="Wellington",Value="7-Wellington"},
+
+       }, "Select the Region")
+
+
+        @Html.ValidationMessageFor(s => s.Region, "", new { @class = "text-danger" })
         <br />
         <br />
 
@@ -86,13 +100,20 @@
         @Html.ValidationMessageFor(s => s.City, "", new { @class = "text-danger" })
         <br />
         <br />
-        <p> @Html.Label("Type of Event", "Type of Event:")</p>
-        @Html.TextBoxFor(s => s.TypeofEvent, null, new { @class = "form-contal" })
+        <p> @Html.Label("Event Category", "Event Category:")</p>
+        @Html.DropDownListFor(s => s.TypeofEvent, new List<SelectListItem>
+           {
+           new SelectListItem {Text ="Mens",Value="Mens"},
+           new SelectListItem {Text ="Womens",Value="Womens"},
+           new SelectListItem {Text ="Juniors",Value="Juniors"},
+           new SelectListItem {Text ="Co-ed",Value="Co-ed"},
+           new SelectListItem {Text ="Others",Value="Others"},
+     }, "Select the Category")
         @Html.ValidationMessageFor(s => s.TypeofEvent, "", new { @class = "text-danger" })
         <br />
         <br />
-        <p> @Html.Label("Number of officials needed", "Number of officials needed")</p>
-        @Html.TextBoxFor(s => s.NumberOfOfficialsNeeded, null, new { @class = "form-contal" })
+        <p> @Html.Label("Special Notes", "Special Notes:")</p>
+        @Html.TextAreaFor(s => s.NumberOfOfficialsNeeded, new { rows = 5, Cols = 50 })
         @Html.ValidationMessageFor(s => s.NumberOfOfficialsNeeded, "", new { @class = "text-danger" })
         <br />
         <br />
@@ -100,7 +121,7 @@
 
 
 
-        <center><input type="Submit" value="EditEvent" class="btn btn-default" /></center>
+        <center><input type="Submit" value="Edit Event" class="button" /></center>
 
 
         <br />
@@ -120,7 +141,7 @@
                 padding: 15px;
                 margin: 5px 0 22px 0;
                 display: inline-block;
-                border: none;
+                border: groove;
                 background: #f1f1f1;
             }
 
@@ -153,7 +174,7 @@
 
             /* Add a blue text color to links */
             a {
-                color: white;
+                color: dodgerblue;
             }
 
             /* Set a grey background color and center the text of the "sign in" section */

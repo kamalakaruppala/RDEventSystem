@@ -1,0 +1,112 @@
+﻿@model RDEvent.Models.UserEvent
+@{
+    ViewBag.Title = "Add Users";
+}
+
+<html>
+<body>
+    <center>
+        <h1 Style="background-color: black;color:pink;"> Register Event</h1>
+        <br />
+
+
+    </center>
+    <br />
+    <button onclick="location.href='@Url.Action("UserProfiles", "Home")';return false;" class="button">Back</button>
+    <br />
+    @if (ViewBag.Message != "")
+    {
+        <div class="alert-success">@ViewBag.Message</div>
+    }
+    @using (Html.BeginForm("AddUsers", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+
+       
+        <p> @Html.Label("Email", "Email:")</p>
+        @Html.TextBoxFor(model => model.EmailID, new { @class = "form-contal", @readonly = "readonly" })
+        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+        @Html.ValidationMessage("InValidUser", new { @class = "text-danger" })
+        <br />
+        <br />
+
+
+        <p> @Html.Label("EventName", "Event Name:")</p>
+        @Html.TextBoxFor(model => model.EventName, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" })
+        @Html.ValidationMessage("InValidEventname", new { @class = "text-danger" })
+        <br />
+        <br />
+        <p> @Html.Label("Roles", "Assign Role:")</p>
+        @Html.TextBoxFor(model => model.Roles, new { @class = "form-contal" })
+        @Html.ValidationMessageFor(model => model.Roles, "", new { @class = "text-danger" })
+
+        <br />
+        <br />
+
+        <center><input type="Submit" value="Add User" class="button" /></center>
+
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Add padding to containers */
+            .container {
+                padding: 16px;
+            }
+
+            /* Full-width input fields */
+            .form-contal, text-danger {
+                width: 30%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: groove;
+                background: #f1f1f1;
+            }
+
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+            /* Overwrite default styles of hr */
+            hr {
+                border: 1px solid #f1f1f1;
+                margin-bottom: 25px;
+            }
+
+            /* Set a style for the submit/register button */
+            .button {
+                background-color: black;
+                color: white;
+                padding: 16px 20px;
+                margin: 20px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+            }
+
+                .button:hover {
+                    opacity: 1;
+                }
+
+            /* Add a blue text color to links */
+            a {
+                color: black;
+            }
+
+            /* Set a grey background color and center the text of the "sign in" section */
+            .signin {
+                background-color: #f1f1f1;
+                text-align: center;
+            }
+        </style>
+
+    }
+</body>
+</html>

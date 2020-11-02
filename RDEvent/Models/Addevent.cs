@@ -14,6 +14,13 @@ namespace RDEvent.Models
     
     public partial class Addevent
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Addevent()
+        {
+            this.UserEvents = new HashSet<UserEvent>();
+        }
+    
+        public int EventID { get; set; }
         public string EventName { get; set; }
         public string Region { get; set; }
         public string Description { get; set; }
@@ -21,6 +28,8 @@ namespace RDEvent.Models
         public string City { get; set; }
         public string TypeofEvent { get; set; }
         public string NumberOfOfficialsNeeded { get; set; }
-        public int EventID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserEvent> UserEvents { get; set; }
     }
 }

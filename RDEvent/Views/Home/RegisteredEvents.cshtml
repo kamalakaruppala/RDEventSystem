@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "RegisteredEvents";
+}
+
+<header>
+    <center> <h1 Style="background-color: black;color:pink;"> Registered Event Details </h1></center>
+</header>
+<br />
+<button onclick="location.href='@Url.Action("Users", "Home")';return false;" class="button">Back</button>
+<br />
+<center>
+    @foreach (var i in Model)
+    {
+    <p>
+        <h3>Event Name: @i.EventName</h3>
+    </p>
+    <p>
+        <h3> Region: @i.Region</h3>
+    </p>
+    <p>
+        <h3> Description: @i.Description</h3>
+    </p>
+    <p>
+        <h3> Date: @i.Date</h3>
+    </p>
+    <p>
+        <h3> City: @i.City</h3>
+    </p>
+    <p>
+        <h3> Event Category: @i.TypeofEvent</h3>
+    </p>
+    <p>
+        <h3> Special Notes: @i.NumberOfOfficialsNeeded</h3>
+    </p>
+
+    }
+</center>
+<style>
+    .button {
+        background-color: black;
+        color: white;
+        padding: 16px 20px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        opacity: 0.9;
+    }
+</style>

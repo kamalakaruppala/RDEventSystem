@@ -26,20 +26,18 @@
                         <a href="/Login/Login">
                             <img src="~/Content/Images/Userlogin.jpg" style="width:30%">
                         </a>
-                        <a href="/Login/Admin">
-                            <img src="~/Content/Images/Adminlogin.png" style="width:30%">
-                        </a>
+
                     </div>
+                    &nbsp;  &nbsp;  &nbsp;
                     <div class="column-sm-2">
-                        <a href="/Events/Index">
-                            <img src="~/Content/Images/Events.jpg" style="width:35%">
+                        <a href="/Events/UserEvents">
+                            <img src="~/Content/Images/Events.jpg" style="width:20%">
                         </a>
+                        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
                         <a href="/News/Index">
-                            <img src="~/Content/Images/News.png" style="width:30%">
+                            <img src="~/Content/Images/News.png" style="width:25%">
                         </a>
-                        <a href="https://www.google.com/maps/search/?api=1&parameters">
-                            <img src="~/Content/Images/Maps.png" style="width:25%">
-                        </a>
+
                     </div>
 
                 </div>
@@ -48,15 +46,17 @@
                         <div class="section-title">
                             <h2>Upcoming Events</h2>
                         </div>
-                        <img src="~/Content/maxresdefault.jpg" style="width:50%">
-                        <p>
-                            Game 1  . Welligton   . Region3
-                        </p>
-                        <img src="~/Content/Images/Derby1.jpg" style="width:50%">
-                        <p>
-                            Game 1  . Auckland   . Region1
-                        </p>
-                        <a href="/Register/Index/" class="primary-btn">Register</a>
+                        <img src="~/Content/maxresdefault.jpg" style="width:80%">
+
+                        @foreach (var i in Model)
+                        {
+                    <p>
+
+                        <h3> @i.EventName . @i.Region. @i.Date</h3>
+                    </p>
+                            break;
+                        }
+                       
 
                     </div>
                 </div>
@@ -98,35 +98,7 @@
         clear: both;
     }
      
-       .background-image body, html {
-            height: 100%;
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        * background-image{
-            box-sizing: border-box;
-        }
-
-       background-image .bg-image {
-            /* Full height */
-            height: 50%;
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        /* Images used */
-        .img1 {
-            background-image: url("/Content/Images/Roller.Background.jpg");
-        }
-
-        .img2 {
-            background-image: url("'/Content/Images/Roller.Background 2.jpg'");
-        }
-        
-     
+      
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}
 .mySlides {display: none}

@@ -12,17 +12,14 @@ namespace RDEvent.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Register
+    public partial class UserEvent
     {
-        public int Id { get; set; }
+        public int UserRegId { get; set; }
         public string EmailID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string Postal { get; set; }
-        public string PhoneNumber { get; set; }
+        public string EventName { get; set; }
+        public string Roles { get; set; }
     
+        public virtual Addevent Addevent { get; set; }
         public virtual User User { get; set; }
     }
 }

@@ -1,11 +1,78 @@
 ﻿
+
 @{
     ViewBag.Title = "AdminNews";
 }
 
-    <html>
+
+
+<html>
+<body>
+
+    <style>
+
+        table,
+        th,
+        td {
+            padding: 50px;
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+    </style>
     <center>
-        <h1 Style="background-color: black;color:pink;"> Add News Feed </h1>
+        <header>
+            <h1 Style="background-color: black;color:pink;"> News Feed </h1>
+        </header>
     </center>
-    </html>
+    <br />
+    <button onclick="location.href='@Url.Action("Admin", "Home")';return false;" class="button">Back</button>
+    <br />
+
+    <br />
+    <center>
+        <table>
+            <tr>
+
+                <th> <h3 Style="background-color: white;color:darkgrey;"> News Title</h3></th>
+                <th> <h3 Style="background-color: white;color:darkgrey;"> News Content</h3></th>
+                <th> <h3 Style="background-color: white;color:darkgrey;"> Delete </h3></th>
+
+
+
+
+
+            </tr>
+            @foreach (var d in Model)
+            {
+                <tr>
+
+                    <td> @d.NewsTitle</td>
+                    <td> @d.NewsContent </td>
+
+                    <td>
+                        @Html.ActionLink("Delete News", "delete", new { NewsTitle = @d.NewsTitle })
+                    </td>
+
+
+                </tr>
+            }
+        </table>
+
+        <center> <a href="/News/AddNews/" class="primary-btn"> Add News</a> </center>
+    </center>
+</body>
+</html>
+
+<style>
+    .button {
+        background-color: black;
+        color: white;
+        padding: 16px 20px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        opacity: 0.9;
+    }
+</style>
 

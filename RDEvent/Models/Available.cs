@@ -12,16 +12,15 @@ namespace RDEvent.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Register
+    public partial class Available
     {
         public int Id { get; set; }
         public string EmailID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string Postal { get; set; }
-        public string PhoneNumber { get; set; }
+        public Nullable<System.DateTime> From { get; set; }
+        public Nullable<System.DateTime> To { get; set; }
+        public string RegionsOfAvailability { get; set; }
+        public string TypesOfGames { get; set; }
+        public string PriorityOfRegions { get; set; }
     
         public virtual User User { get; set; }
     }

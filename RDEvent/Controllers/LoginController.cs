@@ -23,8 +23,8 @@ namespace RDEvent.Controllers
         public ActionResult Login(UserLogin login, string ReturnUrl = "")
         {
             string message = "";
-            using (Database1Entities dc = new Database1Entities())
-            {
+            using (Database1Entities3 dc = new Database1Entities3())
+            {     
                 var v = dc.Users.Where(a => a.EmailID == login.EmailID).FirstOrDefault();
                 if (v != null)
                 {
@@ -55,12 +55,53 @@ namespace RDEvent.Controllers
                     }
                     else
                     {
-                        message = "Invalid credential provided";
+                        message = "Invalid credentials provided";
                     }
                 }
                 else
                 {
-                    message = "Invalid credential provided";
+
+                    if (v == null)
+                    {
+                        var k = dc.Admins.Where(a => a.EmailID == login.EmailID).FirstOrDefault();
+                        if (k != null)
+                        {
+                            if (string.Compare(login.Password, k.Password) == 0)
+                            {
+
+                                int timeout = login.RememberMe ? 525600 : 20;
+                                var ticket = new FormsAuthenticationTicket(login.EmailID, login.RememberMe, timeout);
+                                string encrypted = FormsAuthentication.Encrypt(ticket);
+                                var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
+                                cookie.Expires = DateTime.Now.AddMinutes(timeout);
+                                cookie.HttpOnly = true;
+                                Response.Cookies.Add(cookie);
+
+
+                                if (Url.IsLocalUrl(ReturnUrl))
+                                {
+                                    return Redirect(ReturnUrl);
+                                }
+                                else
+                                {
+                                    return RedirectToAction("Admin", "Home");
+                                }
+                            }
+                            else
+                            {
+                                message = "Invalid credentials provided";
+                            }
+                        }
+                        else
+                        {
+                            message = "Invalid credentials provided";
+                        }
+                    }
+                    else
+                    {
+                        message = "Invalid credentials provided";
+                    }
+                    message = "Invalid credentials provided";
                 }
             }
             ViewBag.Message = message;
@@ -74,10 +115,7 @@ namespace RDEvent.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult Admin()
-        {
-            return View();
-        }
+       
         public ActionResult ForgotPassword()
         {
             return View();
@@ -91,7 +129,7 @@ namespace RDEvent.Controllers
             string message = "";
           //  bool status = false;
 
-            using (Database1Entities dc = new Database1Entities())
+            using (Database1Entities3 dc = new Database1Entities3())
             {
         
        
@@ -120,7 +158,7 @@ namespace RDEvent.Controllers
         }
         public ActionResult ResetPassword(string id)
         {
-            using (Database1Entities db = new Database1Entities())
+            using (Database1Entities3 db = new Database1Entities3())
             {
                 var user = db.Users.Where(a => a.ResetCode== id).FirstOrDefault();
                 if (user != null)
@@ -138,7 +176,7 @@ namespace RDEvent.Controllers
         public ActionResult VerifyAccount(string id)
         {
             bool Status = false;
-            using (Database1Entities dc = new Database1Entities())
+            using (Database1Entities3 dc = new Database1Entities3())
             {
                 dc.Configuration.ValidateOnSaveEnabled = false;
                 var v = dc.Users.Where(a => a.ActivationCode == new Guid(id)).FirstOrDefault();
@@ -161,12 +199,12 @@ namespace RDEvent.Controllers
         public ActionResult ResetPassword(ResetPassword model)
         {
             var message = "";
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                using(Database1Entities db = new Database1Entities())
+                using (Database1Entities3 db = new Database1Entities3())
                 {
                     var user = db.Users.Where(a => a.ResetCode == model.ResetCode).FirstOrDefault();
-                    if(user!=null)
+                    if (user != null)
                     {
                         user.Password = Crypto.Hash(model.NewPassword);
                         user.ResetCode = "";
@@ -185,6 +223,7 @@ namespace RDEvent.Controllers
             return View(model);
 
         }
+       
         [NonAction]
         public void SendVerificationLinkEmail(string emailID, string activationCode)
         {
@@ -195,7 +234,7 @@ namespace RDEvent.Controllers
             var toEmail = new MailAddress(emailID);
             var fromEmailPassword = "9677282349";
             string subject = "Reset Password";
-          string   body = "Hi,<br/><br/>We got request for reset your account password. Please click on the below link to reset your password" +
+          string   body = "Hi,<br/><br/> Please click on the link below to reset your password" +
                     "<br/><br/><a href=" + link + ">Reset Password link</a>";
         
 

@@ -7,16 +7,25 @@
     <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Addevent">
           <Key>
-            <PropertyRef Name="EventID" />
+            <PropertyRef Name="EventName" />
           </Key>
           <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EventName" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="Region" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="Date" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="City" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="TypeofEvent" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="NumberOfOfficialsNeeded" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="EventName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="90" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Date" Type="varchar" MaxLength="45" />
+          <Property Name="City" Type="varchar" MaxLength="40" />
+          <Property Name="TypeofEvent" Type="varchar" MaxLength="35" />
+          <Property Name="NumberOfOfficialsNeeded" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="EmailID" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="32" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -26,32 +35,18 @@
           <Property Name="NewsTitle" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="NewsContent" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="Register">
+        <EntityType Name="UserEvent">
           <Key>
-            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="UserRegId" />
           </Key>
-          <Property Name="FirstName" Type="varchar" MaxLength="20" />
-          <Property Name="LastName" Type="varchar" MaxLength="22" />
-          <Property Name="Street" Type="varchar" MaxLength="60" />
-          <Property Name="City" Type="varchar" MaxLength="25" />
-          <Property Name="Postal" Type="varchar" MaxLength="15" />
-          <Property Name="PhoneNumber" Type="varchar" MaxLength="14" Nullable="false" />
-          <Property Name="ExperiencinYears" Type="varchar" MaxLength="18" />
-          <Property Name="Roles" Type="varchar" MaxLength="10" />
-          <Property Name="NonRoles" Type="varchar" MaxLength="10" />
-          <Property Name="Justifying" Type="varchar" MaxLength="100" />
-          <Property Name="CertificationLevels" Type="varchar" MaxLength="12" />
-          <Property Name="MinistryofBackground" Type="varchar" MaxLength="12" />
-          <Property Name="AdditionalSkills" Type="varchar" MaxLength="40" Nullable="false" />
-          <Property Name="From" Type="date" Nullable="false" />
-          <Property Name="To" Type="date" Nullable="false" />
-          <Property Name="RegionsOfAvailability" Type="varchar" MaxLength="50" />
-          <Property Name="TypesOfGames" Type="varchar" MaxLength="22" />
-          <Property Name="PriorityOfRegions" Type="varchar" MaxLength="23" Nullable="false" />
+          <Property Name="UserRegId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailID" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="EventName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Roles" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="UserID" />
+            <PropertyRef Name="EmailID" />
           </Key>
           <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmailID" Type="varchar" MaxLength="254" Nullable="false" />
@@ -59,108 +54,181 @@
           <Property Name="IsEmailVerified" Type="bit" Nullable="false" />
           <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ResetCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="FirstName" Type="varchar" MaxLength="52" />
+          <Property Name="LastName" Type="varchar" MaxLength="60" />
+          <Property Name="Street" Type="varchar(max)" />
+          <Property Name="City" Type="varchar" MaxLength="60" />
+          <Property Name="Region" Type="varchar" MaxLength="60" />
+          <Property Name="Postal" Type="varchar" MaxLength="60" />
+          <Property Name="MinistryofBackground" Type="varchar" MaxLength="60" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="60" />
+          <Property Name="SkRoles" Type="varchar(max)" />
+          <Property Name="SkExperience" Type="varchar" MaxLength="18" />
+          <Property Name="SkCertificationLevels" Type="varchar" MaxLength="20" />
+          <Property Name="SkAdditionalSkills" Type="varchar" MaxLength="80" />
+          <Property Name="NSkRoles" Type="varchar(max)" />
+          <Property Name="NSkExperience" Type="varchar" MaxLength="30" />
+          <Property Name="NSkCertificationLevels" Type="varchar" MaxLength="20" />
+          <Property Name="NSkAdditionalSkills" Type="varchar" MaxLength="80" />
         </EntityType>
+        <Association Name="FK_UserEvent_ToTable">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserEvent" Type="Self.UserEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="EmailID" />
+            </Principal>
+            <Dependent Role="UserEvent">
+              <PropertyRef Name="EmailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserEvent_ToTable1">
+          <End Role="Addevent" Type="Self.Addevent" Multiplicity="1" />
+          <End Role="UserEvent" Type="Self.UserEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addevent">
+              <PropertyRef Name="EventName" />
+            </Principal>
+            <Dependent Role="UserEvent">
+              <PropertyRef Name="EventName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Database1ModelStoreContainer">
           <EntitySet Name="Addevent" EntityType="Self.Addevent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Register" EntityType="Self.Register" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserEvent" EntityType="Self.UserEvent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_UserEvent_ToTable" Association="Self.FK_UserEvent_ToTable">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserEvent" EntitySet="UserEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserEvent_ToTable1" Association="Self.FK_UserEvent_ToTable1">
+            <End Role="Addevent" EntitySet="Addevent" />
+            <End Role="UserEvent" EntitySet="UserEvent" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Register">
-          <Key>
-            <PropertyRef Name="PhoneNumber" />
-          </Key>
-          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
-          <Property Name="Street" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="Postal" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ExperiencinYears" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
-          <Property Name="Roles" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NonRoles" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Justifying" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CertificationLevels" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="MinistryofBackground" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="AdditionalSkills" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="From" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="To" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="RegionsOfAvailability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TypesOfGames" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
-          <Property Name="PriorityOfRegions" Type="String" MaxLength="23" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="Addevent">
           <Key>
-            <PropertyRef Name="EventID" />
+            <PropertyRef Name="EventName" />
           </Key>
-          <Property Name="EventName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Region" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Date" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="City" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TypeofEvent" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NumberOfOfficialsNeeded" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EventID" Type="Int32" Nullable="false" />
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TypeofEvent" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfOfficialsNeeded" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserEvents" Relationship="Database1Model.FK_UserEvent_ToTable1" FromRole="Addevent" ToRole="UserEvent" />
         </EntityType>
-        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Registers" EntityType="Self.Register" />
-          <EntitySet Name="Addevents" EntityType="Self.Addevent" />
-          <EntitySet Name="Users" EntityType="Database1Model.User" />
-          <EntitySet Name="News" EntityType="Database1Model.News" />
-        </EntityContainer>
-        <EntityType Name="User">
+        <EntityType Name="Admin">
           <Key>
-            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmailID" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
-          <Property Name="ActivationCode" Type="Guid" Nullable="false" />
-          <Property Name="ResetCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="EmailID" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="NewsID" />
           </Key>
           <Property Name="NewsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NewsTitle" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="NewsContent" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NewsTitle" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NewsContent" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-      </Schema>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="EmailID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailID" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+          <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+          <Property Name="ResetCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="52" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Region" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Postal" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MinistryofBackground" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="SkRoles" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SkExperience" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="SkCertificationLevels" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SkAdditionalSkills" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="NSkRoles" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NSkExperience" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NSkCertificationLevels" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NSkAdditionalSkills" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserEvents" Relationship="Database1Model.FK_UserEvent_ToTable" FromRole="User" ToRole="UserEvent" />
+        </EntityType>
+        <EntityContainer Name="Database1Entities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addevents" EntityType="Self.Addevent" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserEvents" EntityType="Database1Model.UserEvent" />
+          <AssociationSet Name="FK_UserEvent_ToTable1" Association="Database1Model.FK_UserEvent_ToTable1">
+            <End Role="Addevent" EntitySet="Addevents" />
+            <End Role="UserEvent" EntitySet="UserEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserEvent_ToTable" Association="Database1Model.FK_UserEvent_ToTable">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserEvent" EntitySet="UserEvents" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="UserEvent">
+          <Key>
+            <PropertyRef Name="UserRegId" />
+          </Key>
+          <Property Name="UserRegId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailID" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="EventName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Roles" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Addevent" Relationship="Database1Model.FK_UserEvent_ToTable1" FromRole="UserEvent" ToRole="Addevent" />
+          <NavigationProperty Name="User" Relationship="Database1Model.FK_UserEvent_ToTable" FromRole="UserEvent" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserEvent_ToTable1">
+          <End Type="Database1Model.Addevent" Role="Addevent" Multiplicity="1" />
+          <End Type="Database1Model.UserEvent" Role="UserEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addevent">
+              <PropertyRef Name="EventName" />
+            </Principal>
+            <Dependent Role="UserEvent">
+              <PropertyRef Name="EventName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserEvent_ToTable">
+          <End Type="Database1Model.User" Role="User" Multiplicity="1" />
+          <End Type="Database1Model.UserEvent" Role="UserEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmailID" />
+            </Principal>
+            <Dependent Role="UserEvent">
+              <PropertyRef Name="EmailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
-          <EntitySetMapping Name="Registers">
-            <EntityTypeMapping TypeName="Database1Model.Register">
-              <MappingFragment StoreEntitySet="Register">
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Street" ColumnName="Street" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Postal" ColumnName="Postal" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="ExperiencinYears" ColumnName="ExperiencinYears" />
-                <ScalarProperty Name="Roles" ColumnName="Roles" />
-                <ScalarProperty Name="NonRoles" ColumnName="NonRoles" />
-                <ScalarProperty Name="Justifying" ColumnName="Justifying" />
-                <ScalarProperty Name="CertificationLevels" ColumnName="CertificationLevels" />
-                <ScalarProperty Name="MinistryofBackground" ColumnName="MinistryofBackground" />
-                <ScalarProperty Name="AdditionalSkills" ColumnName="AdditionalSkills" />
-                <ScalarProperty Name="From" ColumnName="From" />
-                <ScalarProperty Name="To" ColumnName="To" />
-                <ScalarProperty Name="RegionsOfAvailability" ColumnName="RegionsOfAvailability" />
-                <ScalarProperty Name="TypesOfGames" ColumnName="TypesOfGames" />
-                <ScalarProperty Name="PriorityOfRegions" ColumnName="PriorityOfRegions" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities3">
           <EntitySetMapping Name="Addevents">
             <EntityTypeMapping TypeName="Database1Model.Addevent">
               <MappingFragment StoreEntitySet="Addevent">
@@ -175,24 +243,60 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Database1Model.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="ResetCode" ColumnName="ResetCode" />
-                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
-                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="Database1Model.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="Database1Model.News">
               <MappingFragment StoreEntitySet="News">
-                <ScalarProperty Name="NewsContent" ColumnName="NewsContent" />
-                <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
                 <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
+                <ScalarProperty Name="NewsContent" ColumnName="NewsContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Database1Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="NSkAdditionalSkills" ColumnName="NSkAdditionalSkills" />
+                <ScalarProperty Name="NSkCertificationLevels" ColumnName="NSkCertificationLevels" />
+                <ScalarProperty Name="NSkExperience" ColumnName="NSkExperience" />
+                <ScalarProperty Name="NSkRoles" ColumnName="NSkRoles" />
+                <ScalarProperty Name="SkAdditionalSkills" ColumnName="SkAdditionalSkills" />
+                <ScalarProperty Name="SkCertificationLevels" ColumnName="SkCertificationLevels" />
+                <ScalarProperty Name="SkExperience" ColumnName="SkExperience" />
+                <ScalarProperty Name="SkRoles" ColumnName="SkRoles" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="MinistryofBackground" ColumnName="MinistryofBackground" />
+                <ScalarProperty Name="Postal" ColumnName="Postal" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="ResetCode" ColumnName="ResetCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserEvents">
+            <EntityTypeMapping TypeName="Database1Model.UserEvent">
+              <MappingFragment StoreEntitySet="UserEvent">
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="UserRegId" ColumnName="UserRegId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
